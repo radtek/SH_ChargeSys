@@ -1,4 +1,5 @@
-﻿using ChargeSys.Main.Forms;
+﻿using ChargeSys.Common;
+using ChargeSys.Main.Forms;
 using System;
 using System.Collections.Generic;
 using System.Linq;

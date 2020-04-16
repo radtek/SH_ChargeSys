@@ -31,6 +31,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ChargeSys\src\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="NLog">
       <HintPath>..\..\..\..\..\src\NLog.dll</HintPath>
     </Reference>
@@ -47,6 +51,9 @@
   <ItemGroup>
     <Compile Include="AppHelper.cs" />
     <Compile Include="Dtos\DbInfo.cs" />
+    <Compile Include="Dtos\KVEntity.cs" />
+    <Compile Include="Dtos\PrintPoint.cs" />
+    <Compile Include="Dtos\SettingEntity.cs" />
     <Compile Include="ILog\ILogHelper.cs" />
     <Compile Include="ILog\Log.cs" />
     <Compile Include="LogHelper.cs" />

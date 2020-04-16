@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using ChargeSys.Common;
 using Live0xUtils.WebServiceUtils;
 
 namespace ChargeSys.Main

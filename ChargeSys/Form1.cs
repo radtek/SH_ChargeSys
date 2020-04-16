@@ -20,6 +20,9 @@ using iTextSharp.text.pdf;
 using O2S.Components.PDFRender4NET.Printing;
 using System.Web;
 using CI.UIComponents.Helper;
+using ChargeSys.Common;
+using ChargeSys.Common.Dtos;
+using ChargeSys.Core;
 
 namespace ChargeSys.Main
 {

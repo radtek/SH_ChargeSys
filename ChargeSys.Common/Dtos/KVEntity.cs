@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace ChargeSys.Entitys
+namespace ChargeSys.Common.Dtos
 {
     public class KVEntity
     {

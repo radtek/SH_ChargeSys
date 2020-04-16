@@ -264,3 +264,6 @@ __pycache__/
 *.dll
 bin
 obj
+/ChargeSys/src/arial.ttf
+/ChargeSys/src/STZHONGS.TTF
+/ChargeSys/src/STZHONGS.TTF

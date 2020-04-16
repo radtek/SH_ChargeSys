@@ -9,7 +9,7 @@ using iTextSharp.text;
 using iTextSharp.text.pdf;
 using O2S.Components.PDFRender4NET;
 
-namespace ChargeSys.Main
+namespace ChargeSys.Core
 {
     public class PdfHelper
     {

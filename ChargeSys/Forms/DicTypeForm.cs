@@ -1,53 +1,53 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
+﻿using ChargeSys.Common;
 using ChargeSys.Entitys;
+using CI.UIComponents.Helper;
 using HZH_Controls;
 using HZH_Controls.Forms;
-using System.Collections;
-using CI.UIComponents.Helper;
 using Live0xUtils.DbUtils.SqlServer;
-using ChargeSys.Common;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
 
-namespace ChargeSys.Main.Controls
+namespace ChargeSys.Main.Forms
 {
-    public partial class UCChargeSetting : UserControl
+    public partial class DicTypeForm : FrmWithTitle
     {
         private MssqlHelper _mssqlHelper = MssqlHelper.GetInstance();
-
-        public UCChargeSetting()
+        public DicTypeForm()
         {
             InitializeComponent();
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            List<ConstantDefine> list = null;
+            List<ConstantType> list = null;
             ControlHelper.ThreadRunExt(this, () =>
             {
                 try
                 {
                     Hashtable hashtable = null;
-                    string sql = "SELECT  * FROM NetTypeDefine WHERE 1=1 ";
+                    string sql = "SELECT  * FROM ConstantType WHERE 1=1 ";
 
-                    if (!string.IsNullOrEmpty(txtSeachPlateNo.Text.Trim()))
+                    if (!string.IsNullOrEmpty(txtSeach.Text.Trim()))
                     {
                         hashtable = new Hashtable();
-                        hashtable.Add("DefineType", "%" + txtSeachPlateNo.Text.Trim() + "%");
-                        sql += " AND DefineType like @DefineType";
+                        hashtable.Add("TypeName", "%" + txtSeach.Text.Trim() + "%");
+                        sql += " AND TypeName like @DefineType";
                     }
-                    list = _mssqlHelper.QueryList<ConstantDefine>(sql, hashtable).ToList();
+                    list = _mssqlHelper.QueryList<ConstantType>(sql, hashtable).ToList();
                     ControlHelper.ThreadInvokerControl(AppHelper.MainForm, () =>
                     {
                         if (list != null)
                         {
                             CGridHelper.ClearGrid(dgv);
-                            CGridHelper.FillGrid<ConstantDefine>(dgv, list);
+                            CGridHelper.FillGrid<ConstantType>(dgv, list);
                         }
                     });
                 }
@@ -67,11 +67,6 @@ namespace ChargeSys.Main.Controls
 
         }
 
-        private void btnModify_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnDelete_Click(object sender, EventArgs e)
         {
             try
@@ -81,8 +76,8 @@ namespace ChargeSys.Main.Controls
                     FrmTips.ShowTipsError(AppHelper.MainForm, "未选中任何行！", ContentAlignment.MiddleCenter, 1000);
                     return;
                 }
-                ConstantDefine entity = CGridHelper.GetCurrentData<ConstantDefine>(dgv);
-                string sql = "DELETE ConstantDefine WHERE ID = @ID";
+                ConstantType entity = CGridHelper.GetCurrentData<ConstantType>(dgv);
+                string sql = "DELETE ConstantType WHERE ID = @ID";
                 Hashtable hashtable = new Hashtable();
                 hashtable.Add("ID", entity.ID);
                 if (_mssqlHelper.ExcuteNonQuery(sql, hashtable) > 0)
@@ -95,7 +90,7 @@ namespace ChargeSys.Main.Controls
             }
             catch (Exception ex)
             {
-                FrmTips.ShowTipsError(AppHelper.MainForm, "删除异常！"+ex.Message, ContentAlignment.MiddleCenter, 3000);
+                FrmTips.ShowTipsError(AppHelper.MainForm, "删除异常！" + ex.Message, ContentAlignment.MiddleCenter, 3000);
             }
         }
     }
