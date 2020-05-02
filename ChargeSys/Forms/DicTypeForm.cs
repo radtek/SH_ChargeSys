@@ -64,7 +64,8 @@ namespace ChargeSys.Main.Forms
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-
+            DicTypeOptForm form = new DicTypeOptForm();
+            form.ShowDialog(this);
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -91,6 +92,25 @@ namespace ChargeSys.Main.Forms
             catch (Exception ex)
             {
                 FrmTips.ShowTipsError(AppHelper.MainForm, "删除异常！" + ex.Message, ContentAlignment.MiddleCenter, 3000);
+            }
+        }
+
+        private void btnModify_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (dgv.CurrentRow == null || dgv.CurrentRow.Index < 0)
+                {
+                    FrmTips.ShowTipsError(AppHelper.MainForm, "未选中任何行！", ContentAlignment.MiddleCenter, 1000);
+                    return;
+                }
+                ConstantType entity = CGridHelper.GetCurrentData<ConstantType>(dgv);
+                DicTypeOptForm form = new DicTypeOptForm(entity);
+                form.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                FrmTips.ShowTipsError(AppHelper.MainForm, "修改异常！" + ex.Message, ContentAlignment.MiddleCenter, 3000);
             }
         }
     }

@@ -130,6 +130,7 @@
             this.btnModify.TabIndex = 14;
             this.btnModify.Text = "修 改";
             this.btnModify.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.btnModify.Click += new System.EventHandler(this.btnModify_Click);
             // 
             // btnAdd
             // 

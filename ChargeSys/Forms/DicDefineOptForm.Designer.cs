@@ -1,6 +1,6 @@
 ﻿namespace ChargeSys.Main.Forms
 {
-    partial class DicTypeOptForm
+    partial class DicDefineOptForm
     {
         /// <summary>
         /// Required designer variable.

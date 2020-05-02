@@ -99,6 +99,7 @@
             this.Controls.Add(this.emi_Separator1);
             this.Controls.Add(this.tvMenu);
             this.Name = "MainForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.ResumeLayout(false);
 
         }

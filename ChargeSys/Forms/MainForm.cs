@@ -1,4 +1,5 @@
-﻿using ChargeSys.Entitys;
+﻿using ChargeSys.Common;
+using ChargeSys.Entitys;
 using ChargeSys.Main.Controls;
 using EASkins.Controls;
 using HZH_Controls;
@@ -21,6 +22,9 @@ namespace ChargeSys.Main.Forms
     public partial class MainForm : MaterialForm
     {
         private List<SysMenu> _list = new List<SysMenu>();
+
+        private Dictionary<string, Control> m_dicControl = new Dictionary<string, Control>();
+        private Control m_currentControl = null;
 
         public MainForm()
         {
@@ -52,19 +56,35 @@ namespace ChargeSys.Main.Forms
             string strKey = (e.Node.Tag ?? "").ToString();
 
             if (string.IsNullOrEmpty(strKey)) return;
-            Assembly assembly = Assembly.GetExecutingAssembly();
-            object o =assembly.CreateInstance(strKey,true);
-            if (o != null)
+
+            if (m_currentControl != null) m_currentControl.Visible = false;
+            if (m_dicControl.ContainsKey(strKey))
             {
-                panControl.Controls.Clear();
-                Control control = (Control)o;
-                if (control is Form)
-                    ((Form)control).TopLevel = false;
-                control.Dock = DockStyle.Fill;
-                control.AllowDrop = false;
-                panControl.Controls.Add(control);
-                control.BringToFront();
-                control.Show();
+                m_currentControl = m_dicControl[strKey];
+                m_currentControl.Visible = true;
+            }
+            else
+            {
+                Assembly assembly = Assembly.GetExecutingAssembly();
+                object o = assembly.CreateInstance(strKey, true);
+                if (o != null)
+                {
+                    //panControl.Controls.Clear();
+                    Control control = (Control)o;
+                    if (control is Form)
+                        ((Form)control).TopLevel = false;
+                    control.Dock = DockStyle.Fill;
+                    control.AllowDrop = false;
+                    panControl.Controls.Add(control);
+                    control.BringToFront();
+                    control.Show();
+                    m_currentControl = control;
+                    lock (AppHelper.AppLocker)
+                    {
+                        if(!m_dicControl.ContainsKey(strKey))
+                            m_dicControl.Add(strKey, control);
+                    }
+                }
             }
         }
 
