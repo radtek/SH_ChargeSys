@@ -64,5 +64,10 @@ namespace ChargeSys.Common.Dtos
         public string LineType { get; set; }
 
         public string Operator { get; set; }
+
+        public string CallUrl { get; set; }
+
+        public string WindowAddr { get; set; }
+     
     }
 }

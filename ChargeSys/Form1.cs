@@ -278,7 +278,7 @@ namespace ChargeSys.Main
             tableVIN.AddCell(pdfHelper.CreateCell("号牌号码", BoldFont, Element.ALIGN_RIGHT));
             tableVIN.AddCell(pdfHelper.CreateCell(hphm, HeadFont, Element.ALIGN_CENTER));
             tableVIN.AddCell(pdfHelper.CreateCell("VIN", BoldFont, Element.ALIGN_RIGHT));
-            tableVIN.AddCell(pdfHelper.CreateCell(vin, HeadFont, Element.ALIGN_CENTER, false, 2));
+            tableVIN.AddCell(pdfHelper.CreateCell(vin, HeadFont, Element.ALIGN_CENTER, 2));
             doc.Add(tableVIN);
 
             PdfPTable tableMsg = pdfHelper.CreateTable(new float[] { 1, 1, 1, 1 }, doc);

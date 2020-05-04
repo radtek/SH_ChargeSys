@@ -3,6 +3,7 @@ using ChargeSys.Entitys;
 using HZH_Controls.Forms;
 using Live0xUtils.DbUtils.SqlServer;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -25,6 +26,7 @@ namespace ChargeSys.Main.Forms
         public DicDefineOptForm()
         {
             InitializeComponent();
+            Init();
             m_netTypeDefine = new ConstantDefine();
             entityFiller.DisplayEntity(m_netTypeDefine);
         }
@@ -32,8 +34,11 @@ namespace ChargeSys.Main.Forms
         public DicDefineOptForm(ConstantDefine netTypeDefine)
         {
             InitializeComponent();
+            Init();
             m_netTypeDefine = netTypeDefine;
             entityFiller.DisplayEntity(m_netTypeDefine);
+            combDefine.SelectedText = netTypeDefine.ConstantName;
+            combDefine.SelectedValue = netTypeDefine.TypeCode;
         }
 
         public bool IsUpdate { get { return bIsUpdate; } }
@@ -44,6 +49,9 @@ namespace ChargeSys.Main.Forms
             {
                 if (!validator1.Validate()) return;
                 entityFiller.FillEntity(m_netTypeDefine);
+                m_netTypeDefine.TypeName = combDefine.SelectedText;
+                m_netTypeDefine.TypeCode = combDefine.SelectedValue.ToString();
+
                 bool succ = _mssqlHelper.InsertOrUpdate(m_netTypeDefine, null, new string[] { "ID" }, null);
                 if (succ)
                 {
@@ -61,7 +69,27 @@ namespace ChargeSys.Main.Forms
             }
         }
 
+        private void Init()
+        {
+            ArrayList mylist = new ArrayList();
+            var defines = MainCache.GetConstantTypes();
+            foreach (var item in defines)
+            {
+                mylist.Add(new DictionaryEntry(item.Code, item.TypeName));
+            }
+            combDefine.DataSource = mylist;
+            combDefine.DisplayMember = "Value";
+            combDefine.ValueMember = "Key";
+        }
+
         private void ValChangeOptForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        
+
+        private void label3_Click(object sender, EventArgs e)
         {
 
         }

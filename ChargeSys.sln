@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChargeSys.Scan", "ChargeSys
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChargeSys.Core", "ChargeSys.Core\ChargeSys.Core.csproj", "{A935D5EE-6AA1-4E5E-9ADE-2537E2FF598E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChargeSys.Print", "ChargeSys.Print\ChargeSys.Print.csproj", "{3A253CCF-0CE6-4BE0-8A16-1B90F621924D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{A935D5EE-6AA1-4E5E-9ADE-2537E2FF598E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A935D5EE-6AA1-4E5E-9ADE-2537E2FF598E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A935D5EE-6AA1-4E5E-9ADE-2537E2FF598E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A253CCF-0CE6-4BE0-8A16-1B90F621924D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A253CCF-0CE6-4BE0-8A16-1B90F621924D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A253CCF-0CE6-4BE0-8A16-1B90F621924D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A253CCF-0CE6-4BE0-8A16-1B90F621924D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

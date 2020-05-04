@@ -1,4 +1,6 @@
 ﻿using ChargeSys.Common;
+using ChargeSys.Core.DicDefine;
+using ChargeSys.Core.Service;
 using ChargeSys.Entitys;
 using ChargeSys.Main.Controls;
 using EASkins.Controls;
@@ -72,8 +74,12 @@ namespace ChargeSys.Main.Forms
                     //panControl.Controls.Clear();
                     Control control = (Control)o;
                     if (control is Form)
+                    {
                         ((Form)control).TopLevel = false;
+                        ((Form)control).AutoScroll = true;
+                    }
                     control.Dock = DockStyle.Fill;
+                    
                     control.AllowDrop = false;
                     panControl.Controls.Add(control);
                     control.BringToFront();
@@ -88,5 +94,9 @@ namespace ChargeSys.Main.Forms
             }
         }
 
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            ScanService.Close();
+        }
     }
 }

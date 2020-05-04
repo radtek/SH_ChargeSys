@@ -38,44 +38,56 @@
     <ApplicationIcon>input_keyboard.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AxInterop.eloamComLib">
+      <HintPath>..\..\src\AxInterop.eloamComLib.dll</HintPath>
+    </Reference>
     <Reference Include="C1.Win.C1FlexGrid.2">
-      <HintPath>src\C1.Win.C1FlexGrid.2.dll</HintPath>
+      <HintPath>..\..\src\C1.Win.C1FlexGrid.2.dll</HintPath>
     </Reference>
     <Reference Include="CI.Common">
-      <HintPath>src\CI.Common.dll</HintPath>
+      <HintPath>..\..\src\CI.Common.dll</HintPath>
     </Reference>
     <Reference Include="CI.Controls">
-      <HintPath>src\CI.Controls.dll</HintPath>
+      <HintPath>..\..\src\CI.Controls.dll</HintPath>
     </Reference>
     <Reference Include="CI.ServerComponents">
-      <HintPath>src\CI.ServerComponents.dll</HintPath>
+      <HintPath>..\..\src\CI.ServerComponents.dll</HintPath>
     </Reference>
     <Reference Include="CI.UIComponents">
-      <HintPath>src\CI.UIComponents.dll</HintPath>
+      <HintPath>..\..\src\CI.UIComponents.dll</HintPath>
+    </Reference>
+    <Reference Include="CSkin">
+      <HintPath>..\..\src\CSkin.dll</HintPath>
     </Reference>
     <Reference Include="EASkins">
-      <HintPath>src\EASkins.dll</HintPath>
+      <HintPath>..\..\src\EASkins.dll</HintPath>
     </Reference>
     <Reference Include="HZH_Controls">
-      <HintPath>..\..\..\..\..\src\HZH_Controls.dll</HintPath>
+      <HintPath>..\..\src\HZH_Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="Interop.eloamComLib">
+      <HintPath>..\..\src\Interop.eloamComLib.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
     <Reference Include="itextsharp">
-      <HintPath>..\..\..\..\..\src\itextsharp.dll</HintPath>
+      <HintPath>..\..\src\itextsharp.dll</HintPath>
     </Reference>
     <Reference Include="Live0xUtils">
-      <HintPath>src\Live0xUtils.dll</HintPath>
+      <HintPath>..\..\src\Live0xUtils.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>src\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\..\src\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NLog">
+      <HintPath>..\..\src\NLog.dll</HintPath>
     </Reference>
     <Reference Include="O2S.Components.PDFRender4NET">
-      <HintPath>..\..\..\..\..\src\O2S.Components.PDFRender4NET.dll</HintPath>
+      <HintPath>..\..\src\O2S.Components.PDFRender4NET.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Design" />
-    <Reference Include="System.Net.Http, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -111,6 +123,12 @@
     </Compile>
     <Compile Include="Forms\ChargeDefineOpt.Designer.cs">
       <DependentUpon>ChargeDefineOpt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ChargeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ChargeForm.Designer.cs">
+      <DependentUpon>ChargeForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\DbSettingForm.cs">
       <SubType>Form</SubType>
@@ -148,12 +166,31 @@
     <Compile Include="Forms\DicTypeOptForm.Designer.cs">
       <DependentUpon>DicTypeOptForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\PrintSettingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PrintSettingForm.Designer.cs">
+      <DependentUpon>PrintSettingForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\RegisterForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\RegisterForm.Designer.cs">
+      <DependentUpon>RegisterForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SysSettingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SysSettingForm.Designer.cs">
+      <DependentUpon>SysSettingForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="LoadingForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="LoadingForm.Designer.cs">
       <DependentUpon>LoadingForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="MainCache.cs" />
     <Compile Include="NetHelper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -171,6 +208,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ChargeForm.resx">
+      <DependentUpon>ChargeForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\DbSettingForm.resx">
       <DependentUpon>DbSettingForm.cs</DependentUpon>
@@ -190,6 +230,15 @@
     <EmbeddedResource Include="Forms\DicTypeOptForm.resx">
       <DependentUpon>DicTypeOptForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PrintSettingForm.resx">
+      <DependentUpon>PrintSettingForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\RegisterForm.resx">
+      <DependentUpon>RegisterForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SysSettingForm.resx">
+      <DependentUpon>SysSettingForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LoadingForm.resx">
       <DependentUpon>LoadingForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -207,6 +256,9 @@
       <DependentUpon>WaitForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
+    <None Include="MenuConfig.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -219,7 +271,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ChargeSys.Common\ChargeSys.Common.csproj">
-      <Project>{FCA4F9F5-2160-4401-AB5E-5164B80BE198}</Project>
+      <Project>{fca4f9f5-2160-4401-ab5e-5164b80be198}</Project>
       <Name>ChargeSys.Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\ChargeSys.Core\ChargeSys.Core.csproj">

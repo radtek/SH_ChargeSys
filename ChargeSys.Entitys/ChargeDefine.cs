@@ -16,7 +16,7 @@ namespace ChargeSys.Entitys
 
         public string ItemCode { get; set; }
 
-        public string Times { get; set; }
+        public int Times { get; set; }
 
         public double Price { get; set; }
     }

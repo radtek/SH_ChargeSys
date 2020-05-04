@@ -1,4 +1,5 @@
 ﻿using ChargeSys.Common.Dtos;
+using Live0xUtils.DbUtils.SqlServer;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -18,14 +19,15 @@ namespace ChargeSys.Common
 
         public static string DbConfigFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Configs", "DbConfig.json");
 
-        public static string SettingPath = AppDomain.CurrentDomain.BaseDirectory + @"\SysxConfig\SettingConfig.json";
-        public static string PrintConfigPath = AppDomain.CurrentDomain.BaseDirectory + @"\SysxConfig\PrintConfig.json";
+        public static string SettingPath = AppDomain.CurrentDomain.BaseDirectory + @"\Configs\SettingConfig.json";
+        public static string PrintConfigPath = AppDomain.CurrentDomain.BaseDirectory + @"\Configs\PrintConfig.json";
         public static string LogFolder = AppDomain.CurrentDomain.BaseDirectory + @"SysxLog\";  //日志文件夹路径
         public static Form MainForm = null;
         public static List<KVEntity> DefineTpye = new List<KVEntity>();
         public static DbInfo DbSetting = null;
         public static SettingEntity AppSetting = new SettingEntity();
         public static PrintPoint PointSetting = new PrintPoint();
+        public static MssqlHelper DB = MssqlHelper.GetInstance();
 
         public static volatile object AppLocker = new object();
         static AppHelper()
@@ -43,6 +45,8 @@ namespace ChargeSys.Common
                 File.WriteAllText(PrintConfigPath, JsonConvert.SerializeObject(new SettingEntity(), Formatting.Indented));
             }
             _appHelper = new AppHelper();
+
+          
         }
         private AppHelper()
         {

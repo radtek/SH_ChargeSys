@@ -125,6 +125,8 @@ namespace ChargeSys.Entitys
 
         private string qzsField = "";
 
+        private string businessTypeField = "";
+
 
 
         public string jylsh
@@ -496,74 +498,6 @@ namespace ChargeSys.Entitys
         }
 
         /// <remarks/>
-        public string wjbhgx
-        {
-            get
-            {
-                return this.wjbhgxField;
-            }
-            set
-            {
-                this.wjbhgxField = value;
-            }
-        }
-
-        /// <remarks/>
-        public string wjjywhx
-        {
-            get
-            {
-                return this.wjjywhxField;
-            }
-            set
-            {
-                this.wjjywhxField = value;
-            }
-        }
-
-        /// <remarks/>
-        public string dpbhgx
-        {
-            get
-            {
-                return this.dpbhgxField;
-            }
-            set
-            {
-                this.dpbhgxField = value;
-            }
-        }
-
-        /// <remarks/>
-        public string dpjywhx
-        {
-            get
-            {
-                return this.dpjywhxField;
-            }
-            set
-            {
-                this.dpjywhxField = value;
-            }
-        }
-
-        /// <remarks/>
-        public string dtdpbhgx
-        {
-            get
-            {
-                return this.dtdpbhgxField;
-            }
-            set
-            {
-                this.dtdpbhgxField = value;
-            }
-        }
-
-
-
-
-        /// <remarks/>
         public string ccdjrq
         {
             get
@@ -586,6 +520,18 @@ namespace ChargeSys.Entitys
             set
             {
                 this.hdzzlField = value;
+            }
+        }
+
+        public string BusinessType
+        {
+            get
+            {
+               return this.businessTypeField;
+            }
+            set
+            {
+                this.businessTypeField = value;
             }
         }
 

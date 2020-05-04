@@ -41,6 +41,7 @@
             this.flatField3 = new CI.Controls.FlatField();
             this.flatField4 = new CI.Controls.FlatField();
             this.flatField5 = new CI.Controls.FlatField();
+            this.btnTest = new EASkins.Controls.MaterialRaisedButton();
             this.SuspendLayout();
             // 
             // txtPlateNo
@@ -178,10 +179,28 @@
             this.flatField5.Text = "0";
             this.flatField5.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
+            // btnTest
+            // 
+            this.btnTest.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnTest.AutoSize = true;
+            this.btnTest.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnTest.Depth = 0;
+            this.btnTest.Icon = null;
+            this.btnTest.Location = new System.Drawing.Point(811, 85);
+            this.btnTest.MouseState = EASkins.MouseState.HOVER;
+            this.btnTest.Name = "btnTest";
+            this.btnTest.Primary = true;
+            this.btnTest.Size = new System.Drawing.Size(81, 36);
+            this.btnTest.TabIndex = 13;
+            this.btnTest.Text = "模拟数据";
+            this.btnTest.UseVisualStyleBackColor = true;
+            this.btnTest.Click += new System.EventHandler(this.btnTest_Click);
+            // 
             // UCCharge
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnTest);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.materialListView1);
             this.Controls.Add(this.flatField5);
@@ -212,5 +231,6 @@
         private CI.Controls.FlatField flatField3;
         private CI.Controls.FlatField flatField4;
         private CI.Controls.FlatField flatField5;
+        private EASkins.Controls.MaterialRaisedButton btnTest;
     }
 }

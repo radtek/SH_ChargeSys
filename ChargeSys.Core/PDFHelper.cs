@@ -92,7 +92,7 @@ namespace ChargeSys.Core
             paragraph.IndentationLeft = 36f;
             paragraph.IndentationRight = 36f;
 
-            paragraph.Alignment = Element.ALIGN_LEFT;
+            paragraph.Alignment = Element.ALIGN_CENTER;
             paragraph.Add(chunk);
             paragraph.SpacingAfter = 12f;
             return paragraph;
@@ -240,9 +240,9 @@ namespace ChargeSys.Core
         /// <param name="title"></param>
         /// <param name="colspan"></param>
         /// <returns></returns>
-        public PdfPCell CreateCell(string text, Font font, int align, bool title, int colspan)
+        public PdfPCell CreateCell(string text, Font font, int align, int colspan)
         {
-            return CreateCell(text, font, align, title, colspan, false, new BaseColor(134, 195, 228, 100));
+            return CreateCell(text, font, align, false, colspan, false, new BaseColor(134, 195, 228, 100));
         }
         /// <summary>
         /// 
@@ -280,6 +280,7 @@ namespace ChargeSys.Core
             cell.HorizontalAlignment = align;
             cell.VerticalAlignment = Element.ALIGN_MIDDLE;
             cell.Colspan = colspan;
+            cell.MinimumHeight = 30;
             if (title)
                 cell.BackgroundColor = bgColor;
             if (noBorder)

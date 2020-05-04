@@ -63,7 +63,7 @@
             this.tvMenu.ShowLines = false;
             this.tvMenu.ShowPlusMinus = false;
             this.tvMenu.ShowRootLines = false;
-            this.tvMenu.Size = new System.Drawing.Size(225, 828);
+            this.tvMenu.Size = new System.Drawing.Size(194, 579);
             this.tvMenu.TabIndex = 1;
             this.tvMenu.TipFont = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.tvMenu.TipImage = ((System.Drawing.Image)(resources.GetObject("tvMenu.TipImage")));
@@ -72,9 +72,9 @@
             // 
             this.emi_Separator1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.emi_Separator1.Location = new System.Drawing.Point(0, 892);
+            this.emi_Separator1.Location = new System.Drawing.Point(0, 643);
             this.emi_Separator1.Name = "emi_Separator1";
-            this.emi_Separator1.Size = new System.Drawing.Size(1082, 10);
+            this.emi_Separator1.Size = new System.Drawing.Size(1088, 10);
             this.emi_Separator1.TabIndex = 2;
             this.emi_Separator1.Text = "emi_Separator1";
             // 
@@ -85,21 +85,22 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panControl.AutoScroll = true;
             this.panControl.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.panControl.Location = new System.Drawing.Point(227, 65);
+            this.panControl.Location = new System.Drawing.Point(194, 65);
             this.panControl.Name = "panControl";
-            this.panControl.Size = new System.Drawing.Size(853, 824);
+            this.panControl.Size = new System.Drawing.Size(892, 576);
             this.panControl.TabIndex = 3;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1082, 920);
+            this.ClientSize = new System.Drawing.Size(1088, 671);
             this.Controls.Add(this.panControl);
             this.Controls.Add(this.emi_Separator1);
             this.Controls.Add(this.tvMenu);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.ResumeLayout(false);
 
         }

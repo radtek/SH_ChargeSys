@@ -9,7 +9,7 @@ namespace ChargeSys.Common
 {
     public abstract class LogHelper
     {
-        //  public static Logger logger = LogManager.GetCurrentClassLogger();
+        //public static Logger logger = LogManager.GetCurrentClassLogger();
         public static ILogHelper _logHelper = new Log(); 
 
         public static void Error(string msg)

@@ -1,0 +1,65 @@
+[
+  {
+    "MenuId": 1,
+    "MenuName": "数据管理",
+    "ParentId": 0,
+    "ParentName": "",
+    "MenuPath": ""
+  },
+  {
+    "MenuId": 2,
+    "MenuName": "系统管理",
+    "ParentId": 0,
+    "ParentName": "",
+    "MenuPath": ""
+  },
+  {
+    "MenuId": 3,
+    "MenuName": "收费",
+    "ParentId": 1,
+    "ParentName": "",
+    "MenuPath": "ChargeSys.Main.Forms.ChargeForm"
+  },
+  {
+    "MenuId": 4,
+    "MenuName": "收费配置",
+    "ParentId": 2,
+    "ParentName": "",
+    "MenuPath": "ChargeSys.Main.Controls.UCChargeSetting"
+  },
+  {
+    "MenuId": 5,
+    "MenuName": "字典定义",
+    "ParentId": 2,
+    "ParentName": "",
+    "MenuPath": "ChargeSys.Main.Forms.DicDefineForm"
+  },
+  {
+    "MenuId": 6,
+    "MenuName": "类型定义",
+    "ParentId": 2,
+    "ParentName": "",
+    "MenuPath": "ChargeSys.Main.Forms.DicTypeForm"
+  },
+  {
+    "MenuId": 7,
+    "MenuName": "打印设置",
+    "ParentId": 2,
+    "ParentName": "",
+    "MenuPath": "ChargeSys.Main.Forms.PrintSettingForm"
+  },
+  {
+    "MenuId": 8,
+    "MenuName": "系统设置",
+    "ParentId": 2,
+    "ParentName": "",
+    "MenuPath": "ChargeSys.Main.Forms.SysSettingForm"
+  },
+  {
+    "MenuId": 9,
+    "MenuName": "车辆登记",
+    "ParentId": 1,
+    "ParentName": "",
+    "MenuPath": "ChargeSys.Main.Forms.RegisterForm"
+  }
+]
