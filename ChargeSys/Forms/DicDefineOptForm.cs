@@ -71,15 +71,15 @@ namespace ChargeSys.Main.Forms
 
         private void Init()
         {
-            ArrayList mylist = new ArrayList();
+           // ArrayList mylist = new ArrayList();
             var defines = MainCache.GetConstantTypes();
-            foreach (var item in defines)
-            {
-                mylist.Add(new DictionaryEntry(item.Code, item.TypeName));
-            }
-            combDefine.DataSource = mylist;
-            combDefine.DisplayMember = "Value";
-            combDefine.ValueMember = "Key";
+            //foreach (var item in defines)
+            //{
+            //    mylist.Add(new DictionaryEntry(item.Code, item.TypeName));
+            //}
+            combDefine.DataSource = defines;
+            combDefine.DisplayMember = "TypeName";
+            combDefine.ValueMember = "Code";
         }
 
         private void ValChangeOptForm_Load(object sender, EventArgs e)

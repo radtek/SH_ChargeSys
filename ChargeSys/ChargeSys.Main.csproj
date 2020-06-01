@@ -39,51 +39,54 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="AxInterop.eloamComLib">
-      <HintPath>..\..\src\AxInterop.eloamComLib.dll</HintPath>
+      <HintPath>..\..\..\..\..\src\AxInterop.eloamComLib.dll</HintPath>
+    </Reference>
+    <Reference Include="BouncyCastle.Crypto">
+      <HintPath>..\..\..\..\..\src\BouncyCastle.Crypto.dll</HintPath>
     </Reference>
     <Reference Include="C1.Win.C1FlexGrid.2">
-      <HintPath>..\..\src\C1.Win.C1FlexGrid.2.dll</HintPath>
+      <HintPath>..\..\..\..\..\src\C1.Win.C1FlexGrid.2.dll</HintPath>
     </Reference>
     <Reference Include="CI.Common">
-      <HintPath>..\..\src\CI.Common.dll</HintPath>
+      <HintPath>..\..\..\..\..\src\CI.Common.dll</HintPath>
     </Reference>
     <Reference Include="CI.Controls">
-      <HintPath>..\..\src\CI.Controls.dll</HintPath>
+      <HintPath>..\..\..\..\..\src\CI.Controls.dll</HintPath>
     </Reference>
     <Reference Include="CI.ServerComponents">
-      <HintPath>..\..\src\CI.ServerComponents.dll</HintPath>
+      <HintPath>..\..\..\..\..\src\CI.ServerComponents.dll</HintPath>
     </Reference>
     <Reference Include="CI.UIComponents">
-      <HintPath>..\..\src\CI.UIComponents.dll</HintPath>
+      <HintPath>..\..\..\..\..\src\CI.UIComponents.dll</HintPath>
     </Reference>
     <Reference Include="CSkin">
-      <HintPath>..\..\src\CSkin.dll</HintPath>
+      <HintPath>..\..\..\..\..\src\CSkin.dll</HintPath>
     </Reference>
     <Reference Include="EASkins">
-      <HintPath>..\..\src\EASkins.dll</HintPath>
+      <HintPath>..\..\..\..\..\src\EASkins.dll</HintPath>
     </Reference>
     <Reference Include="HZH_Controls">
-      <HintPath>..\..\src\HZH_Controls.dll</HintPath>
+      <HintPath>..\..\..\..\..\src\HZH_Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib">
+      <HintPath>..\..\..\..\..\src\ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
     <Reference Include="Interop.eloamComLib">
-      <HintPath>..\..\src\Interop.eloamComLib.dll</HintPath>
+      <HintPath>..\..\..\..\..\src\Interop.eloamComLib.dll</HintPath>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
     <Reference Include="itextsharp">
-      <HintPath>..\..\src\itextsharp.dll</HintPath>
+      <HintPath>..\..\..\..\..\src\itextsharp.dll</HintPath>
     </Reference>
     <Reference Include="Live0xUtils">
-      <HintPath>..\..\src\Live0xUtils.dll</HintPath>
+      <HintPath>..\..\..\..\..\src\Live0xUtils.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\src\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="NLog">
-      <HintPath>..\..\src\NLog.dll</HintPath>
-    </Reference>
     <Reference Include="O2S.Components.PDFRender4NET">
-      <HintPath>..\..\src\O2S.Components.PDFRender4NET.dll</HintPath>
+      <HintPath>..\..\..\..\..\src\O2S.Components.PDFRender4NET.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -166,6 +169,12 @@
     <Compile Include="Forms\DicTypeOptForm.Designer.cs">
       <DependentUpon>DicTypeOptForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\ApplyTableSettingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ApplyTableSettingForm.Designer.cs">
+      <DependentUpon>ApplyTableSettingForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\PrintSettingForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -229,6 +238,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\DicTypeOptForm.resx">
       <DependentUpon>DicTypeOptForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ApplyTableSettingForm.resx">
+      <DependentUpon>ApplyTableSettingForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\PrintSettingForm.resx">
       <DependentUpon>PrintSettingForm.cs</DependentUpon>

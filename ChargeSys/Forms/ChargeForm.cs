@@ -122,5 +122,6 @@ namespace ChargeSys.Main.Forms
             ScanService.Work();
             ScanService.Satrt();
         }
+
     }
 }

@@ -31,6 +31,7 @@ namespace ChargeSys.Main.Forms
         public MainForm()
         {
             InitializeComponent();
+            AppHelper.MainForm = this;
             _list = JsonConvert.DeserializeObject<List<SysMenu>>(File.ReadAllText("MenuConfig.json")); //加载菜单列表
             InitMenu();
             tvMenu.AfterSelect += tvMenu_AfterSelect;
@@ -77,9 +78,16 @@ namespace ChargeSys.Main.Forms
                     {
                         ((Form)control).TopLevel = false;
                         ((Form)control).AutoScroll = true;
+                        ((Form)control).FormClosed += (s, t) =>
+                        {
+                            m_dicControl.Remove(strKey);
+                            m_currentControl = null;
+                        };
                     }
                     control.Dock = DockStyle.Fill;
-                    
+             
+
+
                     control.AllowDrop = false;
                     panControl.Controls.Add(control);
                     control.BringToFront();
@@ -93,6 +101,8 @@ namespace ChargeSys.Main.Forms
                 }
             }
         }
+
+
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {

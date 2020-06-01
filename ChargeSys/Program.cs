@@ -35,6 +35,7 @@ namespace ChargeSys.Main
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
                 AppHelper.GetInstance();
+                AppHelper.DB.Init("","","","");
                 Application.DoEvents();
                 Application.Run(new MainForm());
             }

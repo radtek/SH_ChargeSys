@@ -21,12 +21,14 @@ namespace ChargeSys.Common
 
         public static string SettingPath = AppDomain.CurrentDomain.BaseDirectory + @"\Configs\SettingConfig.json";
         public static string PrintConfigPath = AppDomain.CurrentDomain.BaseDirectory + @"\Configs\PrintConfig.json";
+        public static string ApplyConfigPath = AppDomain.CurrentDomain.BaseDirectory + @"\Configs\ApplyConfig.json";
         public static string LogFolder = AppDomain.CurrentDomain.BaseDirectory + @"SysxLog\";  //日志文件夹路径
         public static Form MainForm = null;
         public static List<KVEntity> DefineTpye = new List<KVEntity>();
         public static DbInfo DbSetting = null;
         public static SettingEntity AppSetting = new SettingEntity();
         public static PrintPoint PointSetting = new PrintPoint();
+        public static ApplyTableSetting ApplyPointSetting = new ApplyTableSetting();
         public static MssqlHelper DB = MssqlHelper.GetInstance();
 
         public static volatile object AppLocker = new object();
@@ -44,6 +46,9 @@ namespace ChargeSys.Common
             {
                 File.WriteAllText(PrintConfigPath, JsonConvert.SerializeObject(new SettingEntity(), Formatting.Indented));
             }
+            if (!File.Exists(ApplyConfigPath))
+                File.WriteAllText(ApplyConfigPath, JsonConvert.SerializeObject(new SettingEntity(), Formatting.Indented));
+            
             _appHelper = new AppHelper();
 
           
@@ -345,6 +350,9 @@ namespace ChargeSys.Common
                 }
                 configStr = File.ReadAllText(PrintConfigPath);
                 PointSetting = JsonConvert.DeserializeObject<PrintPoint>(configStr);
+
+                configStr = File.ReadAllText(ApplyConfigPath);
+                ApplyPointSetting = JsonConvert.DeserializeObject<ApplyTableSetting>(configStr);
             }
             catch
             {

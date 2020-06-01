@@ -3,6 +3,7 @@ using ChargeSys.Common.Dtos;
 using ChargeSys.Entitys;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
+using O2S.Components.PDFRender4NET;
 using O2S.Components.PDFRender4NET.Printing;
 using System;
 using System.Collections.Generic;
@@ -17,13 +18,13 @@ namespace ChargeSys.Core.Service
 {
     public class ApplyTable
     {
-        private X18J52 _carInfo;
+        private CarInfo _carInfo;
         private PdfHelper _pdfHelper = new PdfHelper();
         private static BaseFont baseFont = BaseFont.CreateFont("STZHONGS.TTF", BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
         private iTextSharp.text.Font BoldFont = null;
         private iTextSharp.text.Font NormalFont = null;
         private string _ticketNo;
-        public ApplyTable(X18J52 carInfo,string ticketNo)
+        public ApplyTable(CarInfo carInfo,string ticketNo)
         {
             _carInfo = carInfo;
             _ticketNo = ticketNo;
@@ -50,7 +51,7 @@ namespace ChargeSys.Core.Service
             table.AddCell(pdfPCell);
 
             table.AddCell(_pdfHelper.CreateCell("姓名/名称", NormalFont, Element.ALIGN_CENTER));
-            table.AddCell(_pdfHelper.CreateCell(_carInfo?.syr, NormalFont, Element.ALIGN_CENTER,2));
+            table.AddCell(_pdfHelper.CreateCell(_carInfo?.Owner, NormalFont, Element.ALIGN_CENTER,2));
             table.AddCell(_pdfHelper.CreateCell("邮政编码", NormalFont, Element.ALIGN_CENTER));
             table.AddCell(_pdfHelper.CreateCell("100010", NormalFont, Element.ALIGN_CENTER));
             table.AddCell(_pdfHelper.CreateCell("邮寄地址", NormalFont, Element.ALIGN_CENTER));
@@ -70,9 +71,9 @@ namespace ChargeSys.Core.Service
 
             table = _pdfHelper.CreateTable(new float[] { 0.3F, 0.7F, 1, 1, 1, 1 }, doc);
             table.AddCell(_pdfHelper.CreateCell("号牌种类", NormalFont, Element.ALIGN_CENTER, 2));
-            table.AddCell(_pdfHelper.CreateCell(AppHelper.GetNameByCode(_carInfo?.hpzl,"HPZL"), NormalFont, Element.ALIGN_CENTER,2));  
+            table.AddCell(_pdfHelper.CreateCell(AppHelper.GetNameByCode(_carInfo?.PlateType,"HPZL"), NormalFont, Element.ALIGN_CENTER,2));  
             table.AddCell(_pdfHelper.CreateCell("号牌号码", NormalFont, Element.ALIGN_CENTER));
-            table.AddCell(_pdfHelper.CreateCell(_carInfo?.hphm, NormalFont, Element.ALIGN_CENTER));
+            table.AddCell(_pdfHelper.CreateCell(_carInfo?.PlateNo, NormalFont, Element.ALIGN_CENTER));
             table.AddCell(_pdfHelper.CreateCell("申请事项", NormalFont, Element.ALIGN_CENTER, 2));
             table.AddCell(_pdfHelper.CreateCell("申请原因及声明", NormalFont, Element.ALIGN_CENTER,4));
 
@@ -160,8 +161,9 @@ namespace ChargeSys.Core.Service
             PDFPrintSettings pdfPrintSettings = new PDFPrintSettings(settings);
             pdfPrintSettings.PageScaling = PageScaling.MultiplePagesPerSheetProportional;
             pdfPrintSettings.PrinterSettings.Copies = 1;
+            LogHelper.Trace("开始打印" + AppHelper.AppSetting.PrinterName);
             pdfFile.Print(pdfPrintSettings);
-
+            LogHelper.Trace("打印完成" + AppHelper.AppSetting.PrinterName);
 
             memoryStream.Close();
             memoryStream.Dispose();
@@ -169,6 +171,74 @@ namespace ChargeSys.Core.Service
             memoryStream1.Dispose();
 
             return pageImage;
+        }
+
+        public void PrintMsg()
+        {
+            PdfHelper pdfHelper = new PdfHelper();
+            Document doc = pdfHelper.CreateDocumentA4();
+            MemoryStream memoryStream = new MemoryStream();
+            PdfWriter writer = PdfWriter.GetInstance(doc, memoryStream);
+            try
+            {
+                doc.Open();
+                doc.NewPage();
+
+                BaseFont ArialFont = BaseFont.CreateFont("STZHONGS.TTF", BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
+                iTextSharp.text.Font BoldFont = new iTextSharp.text.Font(ArialFont, 17, iTextSharp.text.Font.BOLD, new BaseColor(System.Drawing.Color.Black));
+
+                ApplyTableSetting print = AppHelper.ApplyPointSetting;
+                PdfContentByte pb = writer.DirectContent;
+                pb.BeginText();
+                pb.SetFontAndSize(ArialFont, 15);
+                pb.ShowTextAligned(PdfContentByte.ALIGN_LEFT, DateTime.Now.ToString("yyyy"), print.X_Year, print.Y_Year, 0);
+                pb.ShowTextAligned(PdfContentByte.ALIGN_LEFT, DateTime.Now.ToString("MM"), print.X_Month, print.Y_Month, 0);
+                pb.ShowTextAligned(PdfContentByte.ALIGN_LEFT, DateTime.Now.ToString("dd"), print.X_Day, print.Y_Day, 0);
+
+                pb.ShowTextAligned(PdfContentByte.ALIGN_LEFT,_carInfo.Owner, print.X_Owner, print.Y_Owner, 0);
+                pb.ShowTextAligned(PdfContentByte.ALIGN_LEFT, "100021", print.X_Post, print.Y_Post, 0);
+                pb.ShowTextAligned(PdfContentByte.ALIGN_LEFT,_carInfo?.Addr??"", print.X_Addr, print.X_Addr, 0);
+                pb.ShowTextAligned(PdfContentByte.ALIGN_LEFT,_carInfo?.MobilePhone??"", print.X_MobilePhone, print.Y_MobilePhone, 0);
+                pb.ShowTextAligned(PdfContentByte.ALIGN_LEFT,_carInfo.PlateNo, print.X_PlateNo, print.Y_PlateNo, 0);
+                pb.ShowTextAligned(PdfContentByte.ALIGN_LEFT,_carInfo.PlateType, print.X_PlateType, print.Y_PlateType, 0);
+
+                pb.ShowTextAligned(PdfContentByte.ALIGN_LEFT,_ticketNo, print.X_Ticket, print.Y_Ticket, 0);
+                if(_carInfo.PlateNo.Contains("京"))
+                    pb.ShowTextAligned(PdfContentByte.ALIGN_LEFT, "√", print.X_Apply, print.Y_Apply, 0);
+                else
+                    pb.ShowTextAligned(PdfContentByte.ALIGN_LEFT, "√", print.X_Apply1, print.Y_Apply1, 0);
+
+                pb.EndText();
+
+                doc.Close();
+                MemoryStream pdf = new MemoryStream(memoryStream.ToArray());
+                PDFFile pdfFile = PDFFile.Open(pdf);
+
+                PrinterSettings settings = new PrinterSettings();
+                PrintDocument pd = new PrintDocument();
+                settings.PrinterName = AppHelper.AppSetting.PrinterName;
+                settings.PrintToFile = false;
+
+                PDFPrintSettings pdfPrintSettings = new PDFPrintSettings(settings);
+                pdfPrintSettings.PageScaling = PageScaling.MultiplePagesPerSheetProportional;
+                pdfPrintSettings.PrinterSettings.Copies = 1;
+                pdfFile.Print(pdfPrintSettings);
+                pdf.Close();
+                pdf.Dispose();
+                pdfFile.Dispose();
+            }
+            catch (Exception ex)
+            {
+                LogHelper.Error("打印异常:" + ex.Message);
+            }
+            finally
+            {
+                memoryStream.Dispose();
+                memoryStream.Close();
+                writer.Dispose();
+                doc.Dispose();
+                doc.Close();
+            }
         }
     }
 }

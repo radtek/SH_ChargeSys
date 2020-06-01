@@ -24,6 +24,12 @@ namespace ChargeSys.Common.Dtos
 
         public string CarType { get; set; }
 
+        public string MobilePhone { get; set; }
+
+        public string Addr { get; set; }
+
+        public string PlateType { get; set; }
+
         public string TestItem { get; set; }
     }
 }

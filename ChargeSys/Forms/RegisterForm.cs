@@ -1,6 +1,7 @@
 ﻿using ChargeSys.Common;
 using ChargeSys.Common.Dtos;
 using ChargeSys.Core;
+using ChargeSys.Core.Service;
 using ChargeSys.Entitys;
 using HZH_Controls.Forms;
 using iTextSharp.text;
@@ -27,6 +28,9 @@ namespace ChargeSys.Main.Forms
 {
     public partial class RegisterForm : FrmWithTitle
     {
+
+        private X18J52 m_18J52 = null;
+
         public RegisterForm()
         {
             InitializeComponent();
@@ -36,6 +40,7 @@ namespace ChargeSys.Main.Forms
         {
             //查询前清空之前的数据
             picQRCode.BackgroundImage = null;
+            m_18J52 = new X18J52();
             carFiller.DisplayEntity(null);
 
             string hphm = combQueryAera.Text + txtQueryPlateNo.Text.Trim();
@@ -43,7 +48,6 @@ namespace ChargeSys.Main.Forms
             string hpzl = AppHelper.GetCodeByName(combQueryPlateType.Text, "HPZL");
             string result = "";
             string loginUser = "";
-
 
             LoadingForm frmLoading = new LoadingForm("正在查询...");
             frmLoading.BackgroundWorkAction = delegate ()
@@ -63,32 +67,32 @@ namespace ChargeSys.Main.Forms
 
             if (string.IsNullOrEmpty(result))
             {
-                MessageBox.Show("查询结果为空");
+                FrmTips.ShowTipsError(AppHelper.MainForm, "查询结果为空", ContentAlignment.MiddleCenter); 
                 return;
             }
-
-            File.WriteAllText("18J52.txt", result);
+            LogHelper.Trace("查询信息:" + result);
 
             result = HttpUtility.HtmlDecode(result);
             string code = RegexXML.MatchField(result, "code", false);
             if ("1".Equals(code))
             {
-                X18J52 x18J52 = RegexXML.XmlToModelByName<X18J52>(result);
-                string js = JsonConvert.SerializeObject(x18J52);
-                Bitmap bitmap = Live0xUtils.QRCodeUtils.QRCodeHelper.CreateCode(js, -1, 3, true);
-                picQRCode.BackgroundImage = bitmap;
+                m_18J52 = RegexXML.XmlToModelByName<X18J52>(result);
+                m_18J52.BusinessType = combType.Text;
+                //string js = JsonConvert.SerializeObject(x18J52);
+                //Bitmap bitmap = Live0xUtils.QRCodeUtils.QRCodeHelper.CreateCode(js, -1, 3, true);
+                //picQRCode.BackgroundImage = bitmap;
 
                 DateTime d;
-                if (x18J52.ccrq != null && DateTime.TryParse(x18J52.ccrq, out d))
-                    x18J52.ccrq = d.ToString("yyyy年MM月dd日");
+                if (m_18J52.ccrq != null && DateTime.TryParse(m_18J52.ccrq, out d))
+                    m_18J52.ccrq = d.ToString("yyyy年MM月dd日");
 
-                if (x18J52.ccdjrq != null && DateTime.TryParse(x18J52.ccdjrq, out d))
-                    x18J52.ccdjrq = d.ToString("yyyy年MM月dd日");
+                if (m_18J52.ccdjrq != null && DateTime.TryParse(m_18J52.ccdjrq, out d))
+                    m_18J52.ccdjrq = d.ToString("yyyy年MM月dd日");
 
-                x18J52.cllx = AppHelper.GetNameByCode(x18J52.cllx, "CLZL");
-                x18J52.hpzl = AppHelper.GetNameByCode(x18J52.hpzl, "HPZL");
+                m_18J52.cllx = AppHelper.GetNameByCode(m_18J52.cllx, "CLZL");
+                m_18J52.hpzl = AppHelper.GetNameByCode(m_18J52.hpzl, "HPZL");
 
-                carFiller.DisplayEntity(x18J52);
+                carFiller.DisplayEntity(m_18J52);
             }
             else if (string.IsNullOrEmpty(code))
             {
@@ -104,7 +108,16 @@ namespace ChargeSys.Main.Forms
         {
             //if (!validator1.Validate())
             //    return;
+
+            if (m_18J52 == null) return;
+
+            string bType = combType.Text;
             string hpzl = combQueryPlateType.Text;
+            m_18J52.BusinessType = bType;
+            string js = JsonConvert.SerializeObject(m_18J52);
+            Bitmap bitmap = Live0xUtils.QRCodeUtils.QRCodeHelper.CreateCode(js, -1, 3, true);
+            picQRCode.BackgroundImage = bitmap;
+
             LoadingForm frmLoading = new LoadingForm("正在打印...");
             frmLoading.BackgroundWorkAction = delegate ()
             {
@@ -114,6 +127,8 @@ namespace ChargeSys.Main.Forms
                     {
                         frmLoading.CurrentMsg = new KeyValuePair<int, string>(10, "正在打印...");
                         byte[] buffer = null;
+
+
                         if (picQRCode.BackgroundImage != null)
                         {
                             picQRCode.BackgroundImage.Save(memoryStream, ImageFormat.Png);
@@ -122,10 +137,9 @@ namespace ChargeSys.Main.Forms
                             memoryStream.Read(buffer, 0, buffer.Length);
                         }
                         frmLoading.CurrentMsg = new KeyValuePair<int, string>(40, "正在打印...");
-                        X18J52 x18J52 = new X18J52();
-                        carFiller.FillEntity(x18J52);
-                        x18J52.BusinessType = combType.Text;
-                        CreatePDF(x18J52, hpzl, buffer);
+
+                        m_18J52.BusinessType = bType;
+                        CreatePDF(m_18J52, hpzl, buffer);
                         frmLoading.CurrentMsg = new KeyValuePair<int, string>(100, "正在打印...");
                     }
                     catch (Exception ex)
@@ -208,6 +222,19 @@ namespace ChargeSys.Main.Forms
                 doc.Dispose();
                 doc.Close();
             }
+        }
+
+        private void btnTest_Click(object sender, EventArgs e)
+        {
+            //取号
+            CallEntity call = CallService.GetNo("普通车".Equals(combType.Text) ? "B" : "A", txtPlateNo.Text);
+            MessageBox.Show(call.ClientId);
+        }
+
+        private void materialRaisedButton2_Click(object sender, EventArgs e)
+        {
+            //叫号
+            CallService.CallNo(AppHelper.AppSetting.WindowAddr, txtPlateNo.Text);
         }
     }
 }

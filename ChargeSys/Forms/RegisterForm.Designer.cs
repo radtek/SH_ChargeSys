@@ -59,6 +59,8 @@
             this.materialRaisedButton1 = new EASkins.Controls.MaterialRaisedButton();
             this.ami_HeaderLabel1 = new EASkins.Ami_HeaderLabel();
             this.combType = new EASkins.Emi_ComboBox();
+            this.materialRaisedButton2 = new EASkins.Controls.MaterialRaisedButton();
+            this.btnTest = new EASkins.Controls.MaterialRaisedButton();
             ((System.ComponentModel.ISupportInitialize)(this.picQRCode)).BeginInit();
             this.SuspendLayout();
             // 
@@ -542,11 +544,47 @@
             this.combType.StartIndex = 0;
             this.combType.TabIndex = 53;
             // 
+            // materialRaisedButton2
+            // 
+            this.materialRaisedButton2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.materialRaisedButton2.AutoSize = true;
+            this.materialRaisedButton2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.materialRaisedButton2.Depth = 0;
+            this.materialRaisedButton2.Icon = null;
+            this.materialRaisedButton2.Location = new System.Drawing.Point(768, 198);
+            this.materialRaisedButton2.MouseState = EASkins.MouseState.HOVER;
+            this.materialRaisedButton2.Name = "materialRaisedButton2";
+            this.materialRaisedButton2.Primary = true;
+            this.materialRaisedButton2.Size = new System.Drawing.Size(51, 36);
+            this.materialRaisedButton2.TabIndex = 56;
+            this.materialRaisedButton2.Text = "叫号";
+            this.materialRaisedButton2.UseVisualStyleBackColor = true;
+            this.materialRaisedButton2.Click += new System.EventHandler(this.materialRaisedButton2_Click);
+            // 
+            // btnTest
+            // 
+            this.btnTest.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnTest.AutoSize = true;
+            this.btnTest.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnTest.Depth = 0;
+            this.btnTest.Icon = null;
+            this.btnTest.Location = new System.Drawing.Point(702, 198);
+            this.btnTest.MouseState = EASkins.MouseState.HOVER;
+            this.btnTest.Name = "btnTest";
+            this.btnTest.Primary = true;
+            this.btnTest.Size = new System.Drawing.Size(51, 36);
+            this.btnTest.TabIndex = 55;
+            this.btnTest.Text = "取号";
+            this.btnTest.UseVisualStyleBackColor = true;
+            this.btnTest.Click += new System.EventHandler(this.btnTest_Click);
+            // 
             // RegisterForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(897, 573);
+            this.Controls.Add(this.materialRaisedButton2);
+            this.Controls.Add(this.btnTest);
             this.Controls.Add(this.ami_HeaderLabel1);
             this.Controls.Add(this.combType);
             this.Controls.Add(this.materialRaisedButton1);
@@ -610,6 +648,8 @@
             this.Controls.SetChildIndex(this.materialRaisedButton1, 0);
             this.Controls.SetChildIndex(this.combType, 0);
             this.Controls.SetChildIndex(this.ami_HeaderLabel1, 0);
+            this.Controls.SetChildIndex(this.btnTest, 0);
+            this.Controls.SetChildIndex(this.materialRaisedButton2, 0);
             ((System.ComponentModel.ISupportInitialize)(this.picQRCode)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -649,5 +689,7 @@
         private EASkins.Controls.MaterialRaisedButton materialRaisedButton1;
         private EASkins.Ami_HeaderLabel ami_HeaderLabel1;
         private EASkins.Emi_ComboBox combType;
+        private EASkins.Controls.MaterialRaisedButton materialRaisedButton2;
+        private EASkins.Controls.MaterialRaisedButton btnTest;
     }
 }

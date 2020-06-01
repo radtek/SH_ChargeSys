@@ -61,5 +61,12 @@
     "ParentId": 1,
     "ParentName": "",
     "MenuPath": "ChargeSys.Main.Forms.RegisterForm"
+  },
+  {
+    "MenuId": 10,
+    "MenuName": "申请表配置",
+    "ParentId": 2,
+    "ParentName": "",
+    "MenuPath": "ChargeSys.Main.Forms.ApplyTableSettingForm"
   }
 ]
