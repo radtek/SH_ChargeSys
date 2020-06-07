@@ -15,6 +15,6 @@ namespace ChargeSys.Entitys
 
         public string TypeName { get; set; }
 
-        public string Code { get; set; }
+        public string TypeCode { get; set; }
     }
 }

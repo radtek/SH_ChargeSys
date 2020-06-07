@@ -37,6 +37,26 @@
   <PropertyGroup>
     <ApplicationIcon>input_keyboard.ico</ApplicationIcon>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="AxInterop.eloamComLib">
       <HintPath>..\..\..\..\..\src\AxInterop.eloamComLib.dll</HintPath>
@@ -102,6 +122,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Api\ApiHelper.cs" />
+    <Compile Include="Api\ChargeApi.cs" />
+    <Compile Include="Api\ConstantApi.cs" />
+    <Compile Include="Api\QueryVehicleApi.cs" />
+    <Compile Include="Api\ResponseModel.cs" />
     <Compile Include="Controls\UCCharge.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -121,12 +146,6 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\ChargeDefineOpt.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\ChargeDefineOpt.Designer.cs">
-      <DependentUpon>ChargeDefineOpt.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\ChargeForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -139,11 +158,23 @@
     <Compile Include="Forms\DbSettingForm.Designer.cs">
       <DependentUpon>DbSettingForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\ChargeDefineForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ChargeDefineForm.Designer.cs">
+      <DependentUpon>ChargeDefineForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\DicDefineForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\DicDefineForm.Designer.cs">
       <DependentUpon>DicDefineForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ChargeDefineOptForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ChargeDefineOptForm.Designer.cs">
+      <DependentUpon>ChargeDefineOptForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\DicTypeForm.cs">
       <SubType>Form</SubType>
@@ -203,6 +234,8 @@
     <Compile Include="NetHelper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tools\CustomTools.cs" />
+    <Compile Include="Tools\FeeTools.cs" />
     <Compile Include="WaitForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -224,8 +257,14 @@
     <EmbeddedResource Include="Forms\DbSettingForm.resx">
       <DependentUpon>DbSettingForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ChargeDefineForm.resx">
+      <DependentUpon>ChargeDefineForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\DicDefineForm.resx">
       <DependentUpon>DicDefineForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ChargeDefineOptForm.resx">
+      <DependentUpon>ChargeDefineOptForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\DicTypeForm.resx">
       <DependentUpon>DicTypeForm.cs</DependentUpon>

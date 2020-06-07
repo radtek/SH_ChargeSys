@@ -85,9 +85,6 @@ namespace ChargeSys.Main.Forms
                         };
                     }
                     control.Dock = DockStyle.Fill;
-             
-
-
                     control.AllowDrop = false;
                     panControl.Controls.Add(control);
                     control.BringToFront();

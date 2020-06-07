@@ -47,7 +47,7 @@
             this.ami_HeaderLabel2 = new EASkins.Ami_HeaderLabel();
             this.combQueryPlateType = new EASkins.Emi_ComboBox();
             this.flatField43 = new CI.Controls.FlatField();
-            this.flatField41 = new CI.Controls.FlatField();
+            this.txtAddress = new CI.Controls.FlatField();
             this.flatField44 = new CI.Controls.FlatField();
             this.flatField42 = new CI.Controls.FlatField();
             this.flatField37 = new CI.Controls.FlatField();
@@ -59,8 +59,7 @@
             this.materialRaisedButton1 = new EASkins.Controls.MaterialRaisedButton();
             this.ami_HeaderLabel1 = new EASkins.Ami_HeaderLabel();
             this.combType = new EASkins.Emi_ComboBox();
-            this.materialRaisedButton2 = new EASkins.Controls.MaterialRaisedButton();
-            this.btnTest = new EASkins.Controls.MaterialRaisedButton();
+            this.btnReadIDCard = new EASkins.Controls.MaterialRaisedButton();
             ((System.ComponentModel.ISupportInitialize)(this.picQRCode)).BeginInit();
             this.SuspendLayout();
             // 
@@ -330,17 +329,17 @@
             this.flatField43.Size = new System.Drawing.Size(237, 28);
             this.flatField43.TabIndex = 43;
             // 
-            // flatField41
+            // txtAddress
             // 
-            this.flatField41.BackColor = System.Drawing.Color.Transparent;
-            this.flatField41.Caption = "联系地址: ";
-            this.flatField41.CaptionFont = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.flatField41.CaptionWidth = 0;
-            this.flatField41.Font = new System.Drawing.Font("宋体", 12F);
-            this.flatField41.Location = new System.Drawing.Point(13, 485);
-            this.flatField41.Name = "flatField41";
-            this.flatField41.Size = new System.Drawing.Size(548, 28);
-            this.flatField41.TabIndex = 42;
+            this.txtAddress.BackColor = System.Drawing.Color.Transparent;
+            this.txtAddress.Caption = "联系地址: ";
+            this.txtAddress.CaptionFont = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtAddress.CaptionWidth = 0;
+            this.txtAddress.Font = new System.Drawing.Font("宋体", 12F);
+            this.txtAddress.Location = new System.Drawing.Point(13, 485);
+            this.txtAddress.Name = "txtAddress";
+            this.txtAddress.Size = new System.Drawing.Size(548, 28);
+            this.txtAddress.TabIndex = 42;
             // 
             // flatField44
             // 
@@ -482,7 +481,7 @@
             this.btnPrint.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnPrint.Depth = 0;
             this.btnPrint.Icon = null;
-            this.btnPrint.Location = new System.Drawing.Point(609, 215);
+            this.btnPrint.Location = new System.Drawing.Point(744, 218);
             this.btnPrint.MouseState = EASkins.MouseState.HOVER;
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Primary = true;
@@ -544,47 +543,28 @@
             this.combType.StartIndex = 0;
             this.combType.TabIndex = 53;
             // 
-            // materialRaisedButton2
+            // btnReadIDCard
             // 
-            this.materialRaisedButton2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.materialRaisedButton2.AutoSize = true;
-            this.materialRaisedButton2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.materialRaisedButton2.Depth = 0;
-            this.materialRaisedButton2.Icon = null;
-            this.materialRaisedButton2.Location = new System.Drawing.Point(768, 198);
-            this.materialRaisedButton2.MouseState = EASkins.MouseState.HOVER;
-            this.materialRaisedButton2.Name = "materialRaisedButton2";
-            this.materialRaisedButton2.Primary = true;
-            this.materialRaisedButton2.Size = new System.Drawing.Size(51, 36);
-            this.materialRaisedButton2.TabIndex = 56;
-            this.materialRaisedButton2.Text = "叫号";
-            this.materialRaisedButton2.UseVisualStyleBackColor = true;
-            this.materialRaisedButton2.Click += new System.EventHandler(this.materialRaisedButton2_Click);
-            // 
-            // btnTest
-            // 
-            this.btnTest.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnTest.AutoSize = true;
-            this.btnTest.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnTest.Depth = 0;
-            this.btnTest.Icon = null;
-            this.btnTest.Location = new System.Drawing.Point(702, 198);
-            this.btnTest.MouseState = EASkins.MouseState.HOVER;
-            this.btnTest.Name = "btnTest";
-            this.btnTest.Primary = true;
-            this.btnTest.Size = new System.Drawing.Size(51, 36);
-            this.btnTest.TabIndex = 55;
-            this.btnTest.Text = "取号";
-            this.btnTest.UseVisualStyleBackColor = true;
-            this.btnTest.Click += new System.EventHandler(this.btnTest_Click);
+            this.btnReadIDCard.AutoSize = true;
+            this.btnReadIDCard.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnReadIDCard.Depth = 0;
+            this.btnReadIDCard.Icon = null;
+            this.btnReadIDCard.Location = new System.Drawing.Point(599, 218);
+            this.btnReadIDCard.MouseState = EASkins.MouseState.HOVER;
+            this.btnReadIDCard.Name = "btnReadIDCard";
+            this.btnReadIDCard.Primary = true;
+            this.btnReadIDCard.Size = new System.Drawing.Size(58, 36);
+            this.btnReadIDCard.TabIndex = 55;
+            this.btnReadIDCard.Text = "读  卡";
+            this.btnReadIDCard.UseVisualStyleBackColor = true;
+            this.btnReadIDCard.Click += new System.EventHandler(this.btnReadIDCard_Click);
             // 
             // RegisterForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(897, 573);
-            this.Controls.Add(this.materialRaisedButton2);
-            this.Controls.Add(this.btnTest);
+            this.Controls.Add(this.btnReadIDCard);
             this.Controls.Add(this.ami_HeaderLabel1);
             this.Controls.Add(this.combType);
             this.Controls.Add(this.materialRaisedButton1);
@@ -595,7 +575,7 @@
             this.Controls.Add(this.combQueryPlateType);
             this.Controls.Add(this.txtCarType);
             this.Controls.Add(this.flatField43);
-            this.Controls.Add(this.flatField41);
+            this.Controls.Add(this.txtAddress);
             this.Controls.Add(this.flatField46);
             this.Controls.Add(this.flatField44);
             this.Controls.Add(this.flatField45);
@@ -637,7 +617,7 @@
             this.Controls.SetChildIndex(this.flatField45, 0);
             this.Controls.SetChildIndex(this.flatField44, 0);
             this.Controls.SetChildIndex(this.flatField46, 0);
-            this.Controls.SetChildIndex(this.flatField41, 0);
+            this.Controls.SetChildIndex(this.txtAddress, 0);
             this.Controls.SetChildIndex(this.flatField43, 0);
             this.Controls.SetChildIndex(this.txtCarType, 0);
             this.Controls.SetChildIndex(this.combQueryPlateType, 0);
@@ -648,8 +628,7 @@
             this.Controls.SetChildIndex(this.materialRaisedButton1, 0);
             this.Controls.SetChildIndex(this.combType, 0);
             this.Controls.SetChildIndex(this.ami_HeaderLabel1, 0);
-            this.Controls.SetChildIndex(this.btnTest, 0);
-            this.Controls.SetChildIndex(this.materialRaisedButton2, 0);
+            this.Controls.SetChildIndex(this.btnReadIDCard, 0);
             ((System.ComponentModel.ISupportInitialize)(this.picQRCode)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -665,7 +644,7 @@
         private EASkins.Emi_ComboBox combQueryPlateType;
         private CI.Controls.FlatField txtCarType;
         private CI.Controls.FlatField flatField43;
-        private CI.Controls.FlatField flatField41;
+        private CI.Controls.FlatField txtAddress;
         private CI.Controls.FlatField flatField46;
         private CI.Controls.FlatField flatField44;
         private CI.Controls.FlatField flatField45;
@@ -689,7 +668,6 @@
         private EASkins.Controls.MaterialRaisedButton materialRaisedButton1;
         private EASkins.Ami_HeaderLabel ami_HeaderLabel1;
         private EASkins.Emi_ComboBox combType;
-        private EASkins.Controls.MaterialRaisedButton materialRaisedButton2;
-        private EASkins.Controls.MaterialRaisedButton btnTest;
+        private EASkins.Controls.MaterialRaisedButton btnReadIDCard;
     }
 }

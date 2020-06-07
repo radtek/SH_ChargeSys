@@ -1,8 +1,10 @@
 ﻿using ChargeSys.Common;
 using ChargeSys.Entitys;
+using ChargeSys.Main.Api;
 using CI.UIComponents.Helper;
 using HZH_Controls;
 using HZH_Controls.Forms;
+using Newtonsoft.Json;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -34,46 +36,113 @@ namespace ChargeSys.Main.Forms
             List<ConstantDefine> list = null;
             ControlHelper.ThreadRunExt(this, () =>
             {
+                var succ = true;
+                var msg = "";
                 try
                 {
-                    Hashtable hashtable = null;
-                    string sql = "SELECT  * FROM ConstantDefine WHERE 1=1 ";
+                    ResponseModel responseModel = new ResponseModel();
+                    ConstantApi constantApi = new ConstantApi();
+                    responseModel = constantApi.GetConstantDefines();
+                    //Hashtable hashtable = null;
+                    //string sql = "SELECT  * FROM ConstantDefine WHERE 1=1 ";
 
-                    if (!string.IsNullOrEmpty(txtSeach.Text.Trim()))
+                    //if (!string.IsNullOrEmpty(txtSeach.Text.Trim()))
+                    //{
+                    //    hashtable = new Hashtable();
+                    //    hashtable.Add("TypeName", "%" + txtSeach.Text.Trim() + "%");
+                    //    sql += " AND TypeName like @DefineType";
+                    //}
+                    //list = AppHelper.DB.QueryList<ConstantDefine>(sql, hashtable).ToList();
+
+                    if (responseModel.Code == 1)
                     {
-                        hashtable = new Hashtable();
-                        hashtable.Add("TypeName", "%" + txtSeach.Text.Trim() + "%");
-                        sql += " AND TypeName like @DefineType";
-                    }
-                    list = AppHelper.DB.QueryList<ConstantDefine>(sql, hashtable).ToList();
-                    ControlHelper.ThreadInvokerControl(AppHelper.MainForm, () =>
-                    {
-                        if (list != null)
+                        if (responseModel.DataCount > 0)
                         {
-                            CGridHelper.ClearGrid(dgv);
-                            CGridHelper.FillGrid<ConstantDefine>(dgv, list);
+                            list = JsonConvert.DeserializeObject<List<ConstantDefine>>(responseModel?.Data?.ToString());
+                            ControlHelper.ThreadInvokerControl(AppHelper.MainForm, () =>
+                            {
+                                if (list != null)
+                                {
+                                    CGridHelper.ClearGrid(dgv);
+                                    CGridHelper.FillGrid<ConstantDefine>(dgv, list);
+                                }
+                            });
                         }
-                    });
+                        else
+                        {
+                            succ = false;
+                            msg = "查询数据为空!";
+                        }
+                    }
+                    else
+                    {
+                        succ = false;
+                        msg = responseModel?.Message;
+                    }
                 }
                 catch (Exception ex)
                 {
+                    msg = ex.Message;
+                }
+                if (!succ)
+                {
                     ControlHelper.ThreadInvokerControl(AppHelper.MainForm, () =>
                     {
-                        FrmTips.ShowTips(AppHelper.MainForm, ex.Message, 2000, true, ContentAlignment.MiddleCenter, null, TipsSizeMode.Medium, new Size(300, 100), TipsState.Error);
+                        FrmTips.ShowTips(AppHelper.MainForm, msg, 2000, true, ContentAlignment.MiddleCenter, null, TipsSizeMode.Medium, new Size(300, 100), TipsState.Error);
                     });
                 }
-
             }, null, AppHelper.MainForm, true, "正在查询……", 200);
         }
 
         private void btnModify_Click(object sender, EventArgs e)
         {
-
+            try
+            {
+                if (dgv.CurrentRow == null || dgv.CurrentRow.Index < 0)
+                {
+                    FrmTips.ShowTipsError(AppHelper.MainForm, "未选中任何行！", ContentAlignment.MiddleCenter, 1000);
+                    return;
+                }
+                ConstantDefine entity = CGridHelper.GetCurrentData<ConstantDefine>(dgv);
+                DicDefineOptForm form = new DicDefineOptForm(entity);
+                form.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                FrmTips.ShowTipsError(AppHelper.MainForm, "修改异常！" + ex.Message, ContentAlignment.MiddleCenter, 3000);
+            }
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
+            try
+            {
+                if (dgv.CurrentRow == null || dgv.CurrentRow.Index < 0)
+                {
+                    FrmTips.ShowTipsError(AppHelper.MainForm, "未选中任何行！", ContentAlignment.MiddleCenter, 1000);
+                    return;
+                }
+                ConstantDefine entity = CGridHelper.GetCurrentData<ConstantDefine>(dgv);
 
+                ConstantApi constantApi = new ConstantApi();
+                var resp = constantApi.DeleteConstantDefine(entity.ID);
+                //string sql = "DELETE ConstantType WHERE ID = @ID";
+                //Hashtable hashtable = new Hashtable();
+                //hashtable.Add("ID", entity.ID);
+                //if (_mssqlHelper.ExcuteNonQuery(sql, hashtable) > 0)
+                //{
+                if (resp.Code == 1)
+                {
+                    FrmTips.ShowTipsSuccess(AppHelper.MainForm, "删除成功！", ContentAlignment.MiddleCenter, 1000);
+                    CGridHelper.DeleteRow(dgv);
+                }
+                else
+                    FrmTips.ShowTipsError(AppHelper.MainForm, "删除失败！" + resp.Message, ContentAlignment.MiddleCenter, 1000);
+            }
+            catch (Exception ex)
+            {
+                FrmTips.ShowTipsError(AppHelper.MainForm, "删除异常！" + ex.Message, ContentAlignment.MiddleCenter, 3000);
+            }
         }
     }
 }

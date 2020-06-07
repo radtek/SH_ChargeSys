@@ -25,7 +25,7 @@
     "MenuName": "收费配置",
     "ParentId": 2,
     "ParentName": "",
-    "MenuPath": "ChargeSys.Main.Controls.UCChargeSetting"
+    "MenuPath": "ChargeSys.Main.Forms.ChargeDefineForm"
   },
   {
     "MenuId": 5,

@@ -44,6 +44,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ChargeDefine.cs" />
+    <Compile Include="ChargeDetail.cs" />
+    <Compile Include="ChargeRecord.cs" />
     <Compile Include="ConstantDefine.cs" />
     <Compile Include="ConstantType.cs" />
     <Compile Include="Menu.cs" />

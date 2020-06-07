@@ -1,5 +1,6 @@
 ﻿using ChargeSys.Common;
 using ChargeSys.Entitys;
+using ChargeSys.Main.Api;
 using HZH_Controls.Forms;
 using Live0xUtils.DbUtils.SqlServer;
 using System;
@@ -44,8 +45,11 @@ namespace ChargeSys.Main.Forms
             {
                 if (!validator1.Validate()) return;
                 entityFiller.FillEntity(m_netTypeDefine);
-                bool succ = _mssqlHelper.InsertOrUpdate(m_netTypeDefine, null, new string[] { "ID" }, null);
-                if (succ)
+
+                ConstantApi constantApi = new ConstantApi();
+               var  responseModel = constantApi.SaveConstantType(m_netTypeDefine);
+                //bool succ = _mssqlHelper.InsertOrUpdate(m_netTypeDefine, null, new string[] { "ID" }, null);
+                if (responseModel.Code == 1)
                 {
                     FrmTips.ShowTipsSuccess(AppHelper.MainForm, "保存成功！", ContentAlignment.MiddleCenter, 1000);
                     bIsUpdate = true;
@@ -53,7 +57,7 @@ namespace ChargeSys.Main.Forms
                     this.Close();
                 }
                 else
-                    FrmTips.ShowTipsError(AppHelper.MainForm, "保存失败！", ContentAlignment.MiddleCenter, 1000);
+                    FrmTips.ShowTipsError(AppHelper.MainForm, "保存失败！"+responseModel.Message, ContentAlignment.MiddleCenter, 1000);
             }
             catch (Exception ex)
             {

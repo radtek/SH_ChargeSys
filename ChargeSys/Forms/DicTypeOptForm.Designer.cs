@@ -87,7 +87,7 @@
             // 
             // textBox7
             // 
-            this.entityFiller.SetEntityField(this.textBox7, new CI.UIComponents.Filler.TextEntry("Code", ""));
+            this.entityFiller.SetEntityField(this.textBox7, new CI.UIComponents.Filler.TextEntry("TypeCode", ""));
             this.textBox7.Location = new System.Drawing.Point(86, 198);
             this.textBox7.Name = "textBox7";
             this.textBox7.Size = new System.Drawing.Size(274, 23);

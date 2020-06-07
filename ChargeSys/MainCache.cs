@@ -1,5 +1,7 @@
 ﻿using ChargeSys.Common;
 using ChargeSys.Entitys;
+using ChargeSys.Main.Api;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +15,7 @@ namespace ChargeSys.Main
         private static List<ChargeDefine> _chargeDefines ;
         private static List<ConstantType> _constantTypes ;
 
+
         static MainCache()
         {
             Init();
@@ -24,8 +27,7 @@ namespace ChargeSys.Main
             _constantTypes = new List<ConstantType>();
             try
             {
-                _chargeDefines = AppHelper.DB?.QueryList<ChargeDefine>("SELECT * FROM ChargeDefine", null).ToList();
-                _constantTypes = AppHelper.DB?.QueryList<ConstantType>("SELECT * FROM ConstantType", null).ToList();
+           
             }
             catch (Exception ex)
             {
@@ -33,17 +35,17 @@ namespace ChargeSys.Main
             }
         }
 
-        //收费定义
-        public static double GetCharge(string itemName, int times)
-        {
-            double d = 0;
-            var item = _chargeDefines.Where(p => p.Times.Equals(times) && itemName.Equals(p.ItemName)).FirstOrDefault();
-            if (item != null)
-                d = item.Price;
-            return d;
-        }
+    
 
-        public static List<ConstantType> GetConstantTypes() => _constantTypes;
+        public static List<ConstantType> GetConstantTypes()
+        {
+            ConstantApi constantApi = new ConstantApi();
+
+            var respType = constantApi.GetConstantTypes();
+            if (respType.Code == 1 && respType.DataCount > 0)
+                _constantTypes = JsonConvert.DeserializeObject<List<ConstantType>>(respType.Data.ToString());
+           return  _constantTypes;
+        }
         
 
     }

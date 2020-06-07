@@ -3,6 +3,7 @@ using ChargeSys.Entitys;
 using ChargeSys.Main.Api;
 using HZH_Controls.Forms;
 using Live0xUtils.DbUtils.SqlServer;
+using Newtonsoft.Json;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -18,28 +19,28 @@ using System.Windows.Forms;
 
 namespace ChargeSys.Main.Forms
 {
-    public partial class DicDefineOptForm : FrmWithTitle
+    public partial class ChargeDefineOptForm : FrmWithTitle
     {
         private MssqlHelper _mssqlHelper = MssqlHelper.GetInstance();
-        private ConstantDefine m_netTypeDefine = null;
+        private ChargeDefine m_chargeDefine = null;
         private bool bIsUpdate = false;
 
-        public DicDefineOptForm()
+        public ChargeDefineOptForm()
         {
             InitializeComponent();
             Init();
-            m_netTypeDefine = new ConstantDefine();
-            entityFiller.DisplayEntity(m_netTypeDefine);
+            m_chargeDefine = new ChargeDefine();
+            entityFiller.DisplayEntity(m_chargeDefine);
         }
 
-        public DicDefineOptForm(ConstantDefine netTypeDefine)
+        public ChargeDefineOptForm(ChargeDefine chargeDefine)
         {
             InitializeComponent();
             Init();
-            m_netTypeDefine = netTypeDefine;
-            entityFiller.DisplayEntity(m_netTypeDefine);
-            combDefine.SelectedText = netTypeDefine.ConstantName;
-            combDefine.SelectedValue = netTypeDefine.TypeCode;
+            m_chargeDefine = chargeDefine;
+            entityFiller.DisplayEntity(m_chargeDefine);
+            combDefine.SelectedText = m_chargeDefine.ItemName;
+            combDefine.SelectedValue = m_chargeDefine.ItemCode;
         }
 
         public bool IsUpdate { get { return bIsUpdate; } }
@@ -49,12 +50,12 @@ namespace ChargeSys.Main.Forms
             try
             {
                 if (!validator1.Validate()) return;
-                entityFiller.FillEntity(m_netTypeDefine);
-                m_netTypeDefine.TypeName = combDefine.Text;
-                m_netTypeDefine.TypeCode = combDefine.SelectedValue.ToString();
+                entityFiller.FillEntity(m_chargeDefine);
+                m_chargeDefine.ItemName = combDefine.Text;
+                m_chargeDefine.ItemCode = combDefine.SelectedValue.ToString();
 
                 ConstantApi constantApi = new ConstantApi();
-                var responseModel = constantApi.SaveConstantDefine(m_netTypeDefine);
+                var responseModel = constantApi.SaveChargeDefine(m_chargeDefine);
                 //bool succ = _mssqlHelper.InsertOrUpdate(m_netTypeDefine, null, new string[] { "ID" }, null);
                 if (responseModel.Code.Equals(1))
                 {
@@ -74,15 +75,21 @@ namespace ChargeSys.Main.Forms
 
         private void Init()
         {
-           // ArrayList mylist = new ArrayList();
-            var defines = MainCache.GetConstantTypes();
+            // ArrayList mylist = new ArrayList();
+
+            List<ConstantDefine> constantDefines = new List<ConstantDefine>();
+            ConstantApi constantApi = new ConstantApi();
+
+            var respType = constantApi.GetConstantDefines();
+            if (respType.Code == 1 && respType.DataCount > 0)
+                constantDefines = JsonConvert.DeserializeObject<List<ConstantDefine>>(respType.Data.ToString()).Where(p => p.TypeName.Equals("收费项目")).ToList();
             //foreach (var item in defines)
             //{
             //    mylist.Add(new DictionaryEntry(item.Code, item.TypeName));
             //}
-            combDefine.DataSource = defines;
-            combDefine.DisplayMember = "TypeName";
-            combDefine.ValueMember = "TypeCode";
+            combDefine.DataSource = constantDefines;
+            combDefine.DisplayMember = "ConstantName";
+            combDefine.ValueMember = "ConsatntCode";
         }
 
         private void ValChangeOptForm_Load(object sender, EventArgs e)

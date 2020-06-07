@@ -1,0 +1,29 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ChargeSys.Entitys
+{
+    public class ChargeRecord
+    {
+        public int ID { get; set; }
+
+        public string PlateNo { get; set; }
+
+        public string TestNo { get; set; }
+
+        public string TestItem { get; set; }
+
+        public string Guider { get; set; }
+
+        public string VehicleType { get; set; }
+
+        public decimal Price { get; set; }
+
+        public string DateOfTest { get; set; }
+
+        public string DateOfCharge { get; set; }
+    }
+}

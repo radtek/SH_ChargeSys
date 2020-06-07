@@ -26,7 +26,7 @@ namespace ChargeSys.Core
             return Regex.Replace(s, ".", delegate (Match m) { return "负元空零壹贰叁肆伍陆柒捌玖空空空空空空空分角拾佰仟萬億兆京垓秭穰"[m.Value[0] - '-'].ToString(); });
         }
 
-        public static string MoneyToCap(double money)
+        public static string MoneyToCap(decimal money)
         {
             if (money.Equals(0)) return "零圆";
             string s = money.ToString("#L#E#D#C#K#E#D#C#J#E#D#C#I#E#D#C#H#E#D#C#G#E#D#C#F#E#D#C#.0B0A");

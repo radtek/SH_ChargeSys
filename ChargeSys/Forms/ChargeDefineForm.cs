@@ -4,7 +4,6 @@ using ChargeSys.Main.Api;
 using CI.UIComponents.Helper;
 using HZH_Controls;
 using HZH_Controls.Forms;
-using Live0xUtils.DbUtils.SqlServer;
 using Newtonsoft.Json;
 using System;
 using System.Collections;
@@ -19,18 +18,23 @@ using System.Windows.Forms;
 
 namespace ChargeSys.Main.Forms
 {
-    public partial class DicTypeForm : FrmWithTitle
+    public partial class ChargeDefineForm : FrmWithTitle
     {
-        private MssqlHelper _mssqlHelper = MssqlHelper.GetInstance();
-        public DicTypeForm()
+        public ChargeDefineForm()
         {
             InitializeComponent();
         }
 
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            ChargeDefineOptForm form = new ChargeDefineOptForm();
+            form.ShowDialog(this);
+        }
+
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            List<ConstantType> list = null;
-            ControlHelper.ThreadRunExt(AppHelper.MainForm, () =>
+            List<ChargeDefine> list = null;
+            ControlHelper.ThreadRunExt(this, () =>
             {
                 var succ = true;
                 var msg = "";
@@ -38,10 +42,9 @@ namespace ChargeSys.Main.Forms
                 {
                     ResponseModel responseModel = new ResponseModel();
                     ConstantApi constantApi = new ConstantApi();
-                    responseModel = constantApi.GetConstantTypes();
-
+                    responseModel = constantApi.GetChargeDefines();
                     //Hashtable hashtable = null;
-                    //string sql = "SELECT  * FROM ConstantType WHERE 1=1 ";
+                    //string sql = "SELECT  * FROM ConstantDefine WHERE 1=1 ";
 
                     //if (!string.IsNullOrEmpty(txtSeach.Text.Trim()))
                     //{
@@ -49,20 +52,19 @@ namespace ChargeSys.Main.Forms
                     //    hashtable.Add("TypeName", "%" + txtSeach.Text.Trim() + "%");
                     //    sql += " AND TypeName like @DefineType";
                     //}
-                    //list = _mssqlHelper.QueryList<ConstantType>(sql, hashtable).ToList();
-
+                    //list = AppHelper.DB.QueryList<ConstantDefine>(sql, hashtable).ToList();
 
                     if (responseModel.Code == 1)
                     {
                         if (responseModel.DataCount > 0)
                         {
-                            list = JsonConvert.DeserializeObject<List<ConstantType>>(responseModel?.Data?.ToString());
+                            list = JsonConvert.DeserializeObject<List<ChargeDefine>>(responseModel?.Data?.ToString());
                             ControlHelper.ThreadInvokerControl(AppHelper.MainForm, () =>
                             {
                                 if (list != null)
                                 {
                                     CGridHelper.ClearGrid(dgv);
-                                    CGridHelper.FillGrid<ConstantType>(dgv, list);
+                                    CGridHelper.FillGrid<ChargeDefine>(dgv, list);
                                 }
                             });
                         }
@@ -71,18 +73,15 @@ namespace ChargeSys.Main.Forms
                             succ = false;
                             msg = "查询数据为空!";
                         }
-                        //FrmTips.ShowTips(AppHelper.MainForm, "查询数据为空!", 2000, true, ContentAlignment.MiddleCenter, null, TipsSizeMode.Medium, new Size(300, 100), TipsState.Success);
                     }
                     else
                     {
                         succ = false;
                         msg = responseModel?.Message;
                     }
-                    // FrmTips.ShowTips(AppHelper.MainForm,responseModel?.Message, 2000, true, ContentAlignment.MiddleCenter, null, TipsSizeMode.Medium, new Size(300, 100), TipsState.Error);
                 }
                 catch (Exception ex)
                 {
-                    succ = false;
                     msg = ex.Message;
                 }
                 if (!succ)
@@ -95,10 +94,23 @@ namespace ChargeSys.Main.Forms
             }, null, AppHelper.MainForm, true, "正在查询……", 200);
         }
 
-        private void btnAdd_Click(object sender, EventArgs e)
+        private void btnModify_Click(object sender, EventArgs e)
         {
-            DicTypeOptForm form = new DicTypeOptForm();
-            form.ShowDialog(this);
+            try
+            {
+                if (dgv.CurrentRow == null || dgv.CurrentRow.Index < 0)
+                {
+                    FrmTips.ShowTipsError(AppHelper.MainForm, "未选中任何行！", ContentAlignment.MiddleCenter, 1000);
+                    return;
+                }
+                ChargeDefine entity = CGridHelper.GetCurrentData<ChargeDefine>(dgv);
+                ChargeDefineOptForm form = new ChargeDefineOptForm(entity);
+                form.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                FrmTips.ShowTipsError(AppHelper.MainForm, "修改异常！" + ex.Message, ContentAlignment.MiddleCenter, 3000);
+            }
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -110,10 +122,10 @@ namespace ChargeSys.Main.Forms
                     FrmTips.ShowTipsError(AppHelper.MainForm, "未选中任何行！", ContentAlignment.MiddleCenter, 1000);
                     return;
                 }
-                ConstantType entity = CGridHelper.GetCurrentData<ConstantType>(dgv);
+                ChargeDefine entity = CGridHelper.GetCurrentData<ChargeDefine>(dgv);
 
                 ConstantApi constantApi = new ConstantApi();
-                var resp = constantApi.DeleteConstantType(entity.ID);
+                var resp = constantApi.DeleteChargeDefine(entity.ID);
                 //string sql = "DELETE ConstantType WHERE ID = @ID";
                 //Hashtable hashtable = new Hashtable();
                 //hashtable.Add("ID", entity.ID);
@@ -125,30 +137,11 @@ namespace ChargeSys.Main.Forms
                     CGridHelper.DeleteRow(dgv);
                 }
                 else
-                    FrmTips.ShowTipsError(AppHelper.MainForm, "删除失败！"+resp.Message, ContentAlignment.MiddleCenter, 1000);
+                    FrmTips.ShowTipsError(AppHelper.MainForm, "删除失败！" + resp.Message, ContentAlignment.MiddleCenter, 1000);
             }
             catch (Exception ex)
             {
                 FrmTips.ShowTipsError(AppHelper.MainForm, "删除异常！" + ex.Message, ContentAlignment.MiddleCenter, 3000);
-            }
-        }
-
-        private void btnModify_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (dgv.CurrentRow == null || dgv.CurrentRow.Index < 0)
-                {
-                    FrmTips.ShowTipsError(AppHelper.MainForm, "未选中任何行！", ContentAlignment.MiddleCenter, 1000);
-                    return;
-                }
-                ConstantType entity = CGridHelper.GetCurrentData<ConstantType>(dgv);
-                DicTypeOptForm form = new DicTypeOptForm(entity);
-                form.ShowDialog();
-            }
-            catch (Exception ex)
-            {
-                FrmTips.ShowTipsError(AppHelper.MainForm, "修改异常！" + ex.Message, ContentAlignment.MiddleCenter, 3000);
             }
         }
     }

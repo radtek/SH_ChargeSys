@@ -54,6 +54,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgv.BackgroundColor = System.Drawing.Color.White;
+            this.dgv.BorderStyle = System.Windows.Forms.BorderStyle.None;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -68,7 +69,7 @@
             this.Column3,
             this.Column6,
             this.Column2});
-            this.dgv.Location = new System.Drawing.Point(5, 126);
+            this.dgv.Location = new System.Drawing.Point(0, 126);
             this.dgv.MultiSelect = false;
             this.dgv.Name = "dgv";
             this.dgv.ReadOnly = true;
@@ -78,7 +79,7 @@
             this.dgv.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dgv.RowTemplate.Height = 30;
             this.dgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv.Size = new System.Drawing.Size(892, 419);
+            this.dgv.Size = new System.Drawing.Size(897, 419);
             this.dgv.TabIndex = 10;
             // 
             // Column3
@@ -97,7 +98,7 @@
             // 
             // Column2
             // 
-            this.Column2.DataPropertyName = "Code";
+            this.Column2.DataPropertyName = "TypeCode";
             this.Column2.HeaderText = "类型代号";
             this.Column2.Name = "Column2";
             this.Column2.ReadOnly = true;

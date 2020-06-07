@@ -14,7 +14,7 @@ namespace ChargeSys.Common.Dtos
 
         public string TestNo { get; set; }
 
-        public double Price { get; set; }
+        public decimal Price { get; set; }
 
         public int TestTimes { get; set; }
 
