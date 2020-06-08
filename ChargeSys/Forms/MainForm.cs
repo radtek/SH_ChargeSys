@@ -2,6 +2,7 @@
 using ChargeSys.Core.DicDefine;
 using ChargeSys.Core.Service;
 using ChargeSys.Entitys;
+using ChargeSys.Main.Api;
 using ChargeSys.Main.Controls;
 using EASkins.Controls;
 using HZH_Controls;
@@ -24,6 +25,7 @@ namespace ChargeSys.Main.Forms
     public partial class MainForm : MaterialForm
     {
         private List<SysMenu> _list = new List<SysMenu>();
+        private List<Menus> _menus = new List<Menus>();
 
         private Dictionary<string, Control> m_dicControl = new Dictionary<string, Control>();
         private Control m_currentControl = null;
@@ -33,6 +35,12 @@ namespace ChargeSys.Main.Forms
             InitializeComponent();
             AppHelper.MainForm = this;
             _list = JsonConvert.DeserializeObject<List<SysMenu>>(File.ReadAllText("MenuConfig.json")); //加载菜单列表
+            MenuApi menuApi = new MenuApi();
+            var response = menuApi.GetMenuByUser(3);
+            if (response.Code == 1 && response.DataCount > 0)
+            {
+                _menus = JsonConvert.DeserializeObject<List<Menus>>(response.Data.ToString());
+            }
             InitMenu();
             tvMenu.AfterSelect += tvMenu_AfterSelect;
         }
@@ -40,17 +48,18 @@ namespace ChargeSys.Main.Forms
 		private void InitMenu()
 		{
 			ControlHelper.FreezeControl(this, true);
-            foreach (var item in _list.Where(p => p.ParentId.Equals(0)))
+            foreach (var item in _menus.Where(p => p.ParentId.Equals(0)))
             {
-                this.tvMenu.Nodes.Add(InitMenu(item, _list));
+                this.tvMenu.Nodes.Add(InitMenu(item, _menus));
             }
 		}
 
-        private TreeNode InitMenu(SysMenu sysMenu, List<SysMenu> list, int parentId = 0)
+     //   private TreeNode InitMenu(SysMenu sysMenu, List<SysMenu> list, int parentId = 0)
+        private TreeNode InitMenu(Menus sysMenu, List<Menus> list, int parentId = 0)
         {
             TreeNode treeNode = new TreeNode() { Text = sysMenu.MenuName, Tag = sysMenu.MenuPath };
-            foreach (var item in list.Where(p => p.ParentId.Equals(sysMenu.MenuId)))
-                treeNode.Nodes.Add(InitMenu(item, list, item.MenuId));
+            foreach (var item in list.Where(p => p.ParentId.Equals(sysMenu.Id)))
+                treeNode.Nodes.Add(InitMenu(item, list, item.Id));
             return treeNode;
         }
 

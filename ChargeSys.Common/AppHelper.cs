@@ -31,6 +31,8 @@ namespace ChargeSys.Common
         public static ApplyTableSetting ApplyPointSetting = new ApplyTableSetting();
         public static MssqlHelper DB = MssqlHelper.GetInstance();
 
+        public static string UserId = "-1";
+
         public static volatile object AppLocker = new object();
         static AppHelper()
         {

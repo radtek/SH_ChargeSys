@@ -32,7 +32,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="HZH_Controls">
-      <HintPath>..\..\..\..\..\src\HZH_Controls.dll</HintPath>
+      <HintPath>..\ChargeSys.Print\bin\Debug\HZH_Controls.dll</HintPath>
     </Reference>
     <Reference Include="Live0xUtils">
       <HintPath>..\..\..\..\..\src\Live0xUtils.dll</HintPath>

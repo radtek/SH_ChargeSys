@@ -68,5 +68,19 @@
     "ParentId": 2,
     "ParentName": "",
     "MenuPath": "ChargeSys.Main.Forms.ApplyTableSettingForm"
+  },
+  {
+    "MenuId": 11,
+    "MenuName": "用户配置",
+    "ParentId": 2,
+    "ParentName": "",
+    "MenuPath": "ChargeSys.Main.Forms.UserForm"
+  },
+  {
+    "MenuId": 11,
+    "MenuName": "菜单配置",
+    "ParentId": 2,
+    "ParentName": "",
+    "MenuPath": "ChargeSys.Main.Forms.MenuForm"
   }
 ]
