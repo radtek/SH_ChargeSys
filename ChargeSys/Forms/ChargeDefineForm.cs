@@ -23,12 +23,16 @@ namespace ChargeSys.Main.Forms
         public ChargeDefineForm()
         {
             InitializeComponent();
+            btnSearch_Click(null, null);
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
             ChargeDefineOptForm form = new ChargeDefineOptForm();
-            form.ShowDialog(this);
+            if (form.ShowDialog(this) == DialogResult.OK)
+            {
+                btnSearch_Click(null, null);
+            }
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
@@ -105,7 +109,10 @@ namespace ChargeSys.Main.Forms
                 }
                 ChargeDefine entity = CGridHelper.GetCurrentData<ChargeDefine>(dgv);
                 ChargeDefineOptForm form = new ChargeDefineOptForm(entity);
-                form.ShowDialog();
+                if (form.ShowDialog(this) == DialogResult.OK)
+                {
+                    btnSearch_Click(null, null);
+                }
             }
             catch (Exception ex)
             {

@@ -7,6 +7,7 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
+using ChargeSys.Common;
 using Live0xUtils.HttpUtils;
 using Newtonsoft.Json;
 
@@ -21,6 +22,11 @@ namespace ChargeSys.Main.Api
 
         //private static string BaseUrl = "http://192.168.2.235:8088/api/"; 
         private static string BaseUrl = "http://localhost:5000/api/";
+
+        public ApiHelper()
+        {
+            BaseUrl = AppHelper.AppSetting.ApiUrl ?? "";
+        }
 
         public ResponseModel ReqGet(string url, Hashtable hashtable)
         {

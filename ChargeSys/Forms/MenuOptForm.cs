@@ -44,6 +44,8 @@ namespace ChargeSys.Main.Forms
 
         public bool IsUpdate { get { return bIsUpdate; } }
 
+        public Menus GetMenus{ get { return m_menus; } }
+
         private void Init()
         {
             List<Menus> menus = new List<Menus>();
@@ -85,6 +87,7 @@ namespace ChargeSys.Main.Forms
                 if (responseModel.Code == 1)
                 {
                     FrmTips.ShowTipsSuccess(AppHelper.MainForm, "保存成功！", ContentAlignment.MiddleCenter, 1000);
+                    m_menus = JsonConvert.DeserializeObject<Menus>(responseModel.Data.ToString());
                     bIsUpdate = true;
                     this.DialogResult = DialogResult.OK;
                     this.Close();
@@ -101,6 +104,12 @@ namespace ChargeSys.Main.Forms
         private void ValChangeOptForm_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.Cancel;
+            this.Close();
         }
     }
 }

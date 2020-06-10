@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PrintSettingForm));
             this.pointFiller = new CI.UIComponents.Filler.EntityFiller();
             this.flatField32 = new CI.Controls.FlatField();
             this.flatField31 = new CI.Controls.FlatField();
@@ -60,7 +61,7 @@
             this.flatField6 = new CI.Controls.FlatField();
             this.flatField5 = new CI.Controls.FlatField();
             this.pointValidator = new CI.UIComponents.Validate.Validator();
-            this.btnSavePoint = new EASkins.Ami_Button_1();
+            this.btnSave = new EASkins.Controls.MaterialRaisedButton();
             this.SuspendLayout();
             // 
             // flatField32
@@ -507,26 +508,30 @@
                 ((CI.UIComponents.Validate.BaseValidator)(new CI.UIComponents.Validate.RequiredFieldValidator("不能为空！", ""))),
                 ((CI.UIComponents.Validate.BaseValidator)(new CI.UIComponents.Validate.RegularExpressionValidator("必须是整数！", "^[0-9]*$")))}));
             // 
-            // btnSavePoint
+            // btnSave
             // 
-            this.btnSavePoint.BackColor = System.Drawing.Color.Transparent;
-            this.btnSavePoint.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.btnSavePoint.Image = null;
-            this.btnSavePoint.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSavePoint.Location = new System.Drawing.Point(41, 606);
-            this.btnSavePoint.Name = "btnSavePoint";
-            this.btnSavePoint.Size = new System.Drawing.Size(106, 30);
-            this.btnSavePoint.TabIndex = 59;
-            this.btnSavePoint.Text = "保 存";
-            this.btnSavePoint.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.btnSavePoint.Click += new System.EventHandler(this.btnSavePoint_Click);
+            this.btnSave.AutoSize = true;
+            this.btnSave.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnSave.BackColor = System.Drawing.Color.White;
+            this.btnSave.Depth = 0;
+            this.btnSave.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(66)))), ((int)(((byte)(66)))));
+            this.btnSave.Icon = ((System.Drawing.Image)(resources.GetObject("btnSave.Icon")));
+            this.btnSave.Location = new System.Drawing.Point(457, 587);
+            this.btnSave.MouseState = EASkins.MouseState.HOVER;
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Primary = true;
+            this.btnSave.Size = new System.Drawing.Size(86, 36);
+            this.btnSave.TabIndex = 59;
+            this.btnSave.Text = "保  存";
+            this.btnSave.UseVisualStyleBackColor = false;
+            this.btnSave.Click += new System.EventHandler(this.btnSavePoint_Click);
             // 
             // PrintSettingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(866, 692);
-            this.Controls.Add(this.btnSavePoint);
+            this.Controls.Add(this.btnSave);
             this.Controls.Add(this.flatField32);
             this.Controls.Add(this.flatField31);
             this.Controls.Add(this.flatField30);
@@ -589,8 +594,9 @@
             this.Controls.SetChildIndex(this.flatField30, 0);
             this.Controls.SetChildIndex(this.flatField31, 0);
             this.Controls.SetChildIndex(this.flatField32, 0);
-            this.Controls.SetChildIndex(this.btnSavePoint, 0);
+            this.Controls.SetChildIndex(this.btnSave, 0);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -598,7 +604,6 @@
 
         private CI.UIComponents.Filler.EntityFiller pointFiller;
         private CI.UIComponents.Validate.Validator pointValidator;
-        private EASkins.Ami_Button_1 btnSavePoint;
         private CI.Controls.FlatField flatField32;
         private CI.Controls.FlatField flatField31;
         private CI.Controls.FlatField flatField30;
@@ -629,5 +634,6 @@
         private CI.Controls.FlatField flatField8;
         private CI.Controls.FlatField flatField6;
         private CI.Controls.FlatField flatField5;
+        private EASkins.Controls.MaterialRaisedButton btnSave;
     }
 }

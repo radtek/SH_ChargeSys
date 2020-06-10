@@ -16,6 +16,7 @@ using ChargeSys.Main.Api;
 using ChargeSys.Entitys;
 using Newtonsoft.Json;
 using ChargeSys.Common;
+using ChargeSys.Main.Forms;
 
 namespace VehicleManagerSys.Main.CustomForms
 {
@@ -79,9 +80,9 @@ namespace VehicleManagerSys.Main.CustomForms
 
         private void labDbSetting_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            //DbSettingForm dbSettingForm = new DbSettingForm();
-            //dbSettingForm.IsShowCloseBtn = true;
-            //dbSettingForm.ShowDialog(this); 
+            SysSettingForm dbSettingForm = new SysSettingForm();
+            dbSettingForm.IsShowCloseBtn = true;
+            dbSettingForm.ShowDialog(this);
         }
 
 

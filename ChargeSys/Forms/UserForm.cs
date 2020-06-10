@@ -25,6 +25,7 @@ namespace ChargeSys.Main.Forms
         public UserForm()
         {
             InitializeComponent();
+            btnRefresh_Click(null, null);
         }
 
 

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ApplyTableSettingForm));
             this.pointFiller = new CI.UIComponents.Filler.EntityFiller();
             this.flatField34 = new CI.Controls.FlatField();
             this.flatField9 = new CI.Controls.FlatField();
@@ -37,12 +38,6 @@
             this.flatField8 = new CI.Controls.FlatField();
             this.flatField6 = new CI.Controls.FlatField();
             this.flatField5 = new CI.Controls.FlatField();
-            this.pointValidator = new CI.UIComponents.Validate.Validator();
-            this.btnSavePoint = new EASkins.Ami_Button_1();
-            this.flatField2 = new CI.Controls.FlatField();
-            this.flatField4 = new CI.Controls.FlatField();
-            this.flatField13 = new CI.Controls.FlatField();
-            this.flatField14 = new CI.Controls.FlatField();
             this.flatField1 = new CI.Controls.FlatField();
             this.flatField3 = new CI.Controls.FlatField();
             this.flatField11 = new CI.Controls.FlatField();
@@ -61,6 +56,12 @@
             this.flatField26 = new CI.Controls.FlatField();
             this.flatField27 = new CI.Controls.FlatField();
             this.flatField28 = new CI.Controls.FlatField();
+            this.pointValidator = new CI.UIComponents.Validate.Validator();
+            this.flatField2 = new CI.Controls.FlatField();
+            this.flatField4 = new CI.Controls.FlatField();
+            this.flatField13 = new CI.Controls.FlatField();
+            this.flatField14 = new CI.Controls.FlatField();
+            this.btnSave = new EASkins.Controls.MaterialRaisedButton();
             this.SuspendLayout();
             // 
             // flatField34
@@ -174,76 +175,6 @@
             this.flatField5.Size = new System.Drawing.Size(237, 25);
             this.flatField5.TabIndex = 29;
             this.pointValidator.SetTaget(this.flatField5, new CI.UIComponents.Validate.TextTaget(new CI.UIComponents.Validate.BaseValidator[] {
-                ((CI.UIComponents.Validate.BaseValidator)(new CI.UIComponents.Validate.RequiredFieldValidator("不能为空！", ""))),
-                ((CI.UIComponents.Validate.BaseValidator)(new CI.UIComponents.Validate.RegularExpressionValidator("必须是整数！", "^[0-9]*$")))}));
-            // 
-            // btnSavePoint
-            // 
-            this.btnSavePoint.BackColor = System.Drawing.Color.Transparent;
-            this.btnSavePoint.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.btnSavePoint.Image = null;
-            this.btnSavePoint.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSavePoint.Location = new System.Drawing.Point(580, 566);
-            this.btnSavePoint.Name = "btnSavePoint";
-            this.btnSavePoint.Size = new System.Drawing.Size(106, 30);
-            this.btnSavePoint.TabIndex = 59;
-            this.btnSavePoint.Text = "保 存";
-            this.btnSavePoint.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.btnSavePoint.Click += new System.EventHandler(this.btnSavePoint_Click);
-            // 
-            // flatField2
-            // 
-            this.flatField2.BackColor = System.Drawing.Color.Transparent;
-            this.flatField2.Caption = "Y_代理人手机";
-            this.flatField2.CaptionFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.flatField2.CaptionWidth = 0;
-            this.flatField2.Location = new System.Drawing.Point(449, 253);
-            this.flatField2.Name = "flatField2";
-            this.flatField2.Size = new System.Drawing.Size(237, 25);
-            this.flatField2.TabIndex = 66;
-            this.pointValidator.SetTaget(this.flatField2, new CI.UIComponents.Validate.TextTaget(new CI.UIComponents.Validate.BaseValidator[] {
-                ((CI.UIComponents.Validate.BaseValidator)(new CI.UIComponents.Validate.RequiredFieldValidator("不能为空！", ""))),
-                ((CI.UIComponents.Validate.BaseValidator)(new CI.UIComponents.Validate.RegularExpressionValidator("必须是整数！", "^[0-9]*$")))}));
-            // 
-            // flatField4
-            // 
-            this.flatField4.BackColor = System.Drawing.Color.Transparent;
-            this.flatField4.Caption = "X_代理人手机";
-            this.flatField4.CaptionFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.flatField4.CaptionWidth = 0;
-            this.flatField4.Location = new System.Drawing.Point(184, 253);
-            this.flatField4.Name = "flatField4";
-            this.flatField4.Size = new System.Drawing.Size(237, 25);
-            this.flatField4.TabIndex = 64;
-            this.pointValidator.SetTaget(this.flatField4, new CI.UIComponents.Validate.TextTaget(new CI.UIComponents.Validate.BaseValidator[] {
-                ((CI.UIComponents.Validate.BaseValidator)(new CI.UIComponents.Validate.RequiredFieldValidator("不能为空！", ""))),
-                ((CI.UIComponents.Validate.BaseValidator)(new CI.UIComponents.Validate.RegularExpressionValidator("必须是整数！", "^[0-9]*$")))}));
-            // 
-            // flatField13
-            // 
-            this.flatField13.BackColor = System.Drawing.Color.Transparent;
-            this.flatField13.Caption = "Y_代理人姓名";
-            this.flatField13.CaptionFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.flatField13.CaptionWidth = 0;
-            this.flatField13.Location = new System.Drawing.Point(449, 222);
-            this.flatField13.Name = "flatField13";
-            this.flatField13.Size = new System.Drawing.Size(237, 25);
-            this.flatField13.TabIndex = 61;
-            this.pointValidator.SetTaget(this.flatField13, new CI.UIComponents.Validate.TextTaget(new CI.UIComponents.Validate.BaseValidator[] {
-                ((CI.UIComponents.Validate.BaseValidator)(new CI.UIComponents.Validate.RequiredFieldValidator("不能为空！", ""))),
-                ((CI.UIComponents.Validate.BaseValidator)(new CI.UIComponents.Validate.RegularExpressionValidator("必须是整数！", "^[0-9]*$")))}));
-            // 
-            // flatField14
-            // 
-            this.flatField14.BackColor = System.Drawing.Color.Transparent;
-            this.flatField14.Caption = "X_ 代理人姓名";
-            this.flatField14.CaptionFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.flatField14.CaptionWidth = 0;
-            this.flatField14.Location = new System.Drawing.Point(184, 222);
-            this.flatField14.Name = "flatField14";
-            this.flatField14.Size = new System.Drawing.Size(237, 25);
-            this.flatField14.TabIndex = 60;
-            this.pointValidator.SetTaget(this.flatField14, new CI.UIComponents.Validate.TextTaget(new CI.UIComponents.Validate.BaseValidator[] {
                 ((CI.UIComponents.Validate.BaseValidator)(new CI.UIComponents.Validate.RequiredFieldValidator("不能为空！", ""))),
                 ((CI.UIComponents.Validate.BaseValidator)(new CI.UIComponents.Validate.RegularExpressionValidator("必须是整数！", "^[0-9]*$")))}));
             // 
@@ -517,11 +448,86 @@
                 ((CI.UIComponents.Validate.BaseValidator)(new CI.UIComponents.Validate.RequiredFieldValidator("不能为空！", ""))),
                 ((CI.UIComponents.Validate.BaseValidator)(new CI.UIComponents.Validate.RegularExpressionValidator("必须是整数！", "^[0-9]*$")))}));
             // 
+            // flatField2
+            // 
+            this.flatField2.BackColor = System.Drawing.Color.Transparent;
+            this.flatField2.Caption = "Y_代理人手机";
+            this.flatField2.CaptionFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.flatField2.CaptionWidth = 0;
+            this.flatField2.Location = new System.Drawing.Point(449, 253);
+            this.flatField2.Name = "flatField2";
+            this.flatField2.Size = new System.Drawing.Size(237, 25);
+            this.flatField2.TabIndex = 66;
+            this.pointValidator.SetTaget(this.flatField2, new CI.UIComponents.Validate.TextTaget(new CI.UIComponents.Validate.BaseValidator[] {
+                ((CI.UIComponents.Validate.BaseValidator)(new CI.UIComponents.Validate.RequiredFieldValidator("不能为空！", ""))),
+                ((CI.UIComponents.Validate.BaseValidator)(new CI.UIComponents.Validate.RegularExpressionValidator("必须是整数！", "^[0-9]*$")))}));
+            // 
+            // flatField4
+            // 
+            this.flatField4.BackColor = System.Drawing.Color.Transparent;
+            this.flatField4.Caption = "X_代理人手机";
+            this.flatField4.CaptionFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.flatField4.CaptionWidth = 0;
+            this.flatField4.Location = new System.Drawing.Point(184, 253);
+            this.flatField4.Name = "flatField4";
+            this.flatField4.Size = new System.Drawing.Size(237, 25);
+            this.flatField4.TabIndex = 64;
+            this.pointValidator.SetTaget(this.flatField4, new CI.UIComponents.Validate.TextTaget(new CI.UIComponents.Validate.BaseValidator[] {
+                ((CI.UIComponents.Validate.BaseValidator)(new CI.UIComponents.Validate.RequiredFieldValidator("不能为空！", ""))),
+                ((CI.UIComponents.Validate.BaseValidator)(new CI.UIComponents.Validate.RegularExpressionValidator("必须是整数！", "^[0-9]*$")))}));
+            // 
+            // flatField13
+            // 
+            this.flatField13.BackColor = System.Drawing.Color.Transparent;
+            this.flatField13.Caption = "Y_代理人姓名";
+            this.flatField13.CaptionFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.flatField13.CaptionWidth = 0;
+            this.flatField13.Location = new System.Drawing.Point(449, 222);
+            this.flatField13.Name = "flatField13";
+            this.flatField13.Size = new System.Drawing.Size(237, 25);
+            this.flatField13.TabIndex = 61;
+            this.pointValidator.SetTaget(this.flatField13, new CI.UIComponents.Validate.TextTaget(new CI.UIComponents.Validate.BaseValidator[] {
+                ((CI.UIComponents.Validate.BaseValidator)(new CI.UIComponents.Validate.RequiredFieldValidator("不能为空！", ""))),
+                ((CI.UIComponents.Validate.BaseValidator)(new CI.UIComponents.Validate.RegularExpressionValidator("必须是整数！", "^[0-9]*$")))}));
+            // 
+            // flatField14
+            // 
+            this.flatField14.BackColor = System.Drawing.Color.Transparent;
+            this.flatField14.Caption = "X_ 代理人姓名";
+            this.flatField14.CaptionFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.flatField14.CaptionWidth = 0;
+            this.flatField14.Location = new System.Drawing.Point(184, 222);
+            this.flatField14.Name = "flatField14";
+            this.flatField14.Size = new System.Drawing.Size(237, 25);
+            this.flatField14.TabIndex = 60;
+            this.pointValidator.SetTaget(this.flatField14, new CI.UIComponents.Validate.TextTaget(new CI.UIComponents.Validate.BaseValidator[] {
+                ((CI.UIComponents.Validate.BaseValidator)(new CI.UIComponents.Validate.RequiredFieldValidator("不能为空！", ""))),
+                ((CI.UIComponents.Validate.BaseValidator)(new CI.UIComponents.Validate.RegularExpressionValidator("必须是整数！", "^[0-9]*$")))}));
+            // 
+            // btnSave
+            // 
+            this.btnSave.AutoSize = true;
+            this.btnSave.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnSave.BackColor = System.Drawing.Color.White;
+            this.btnSave.Depth = 0;
+            this.btnSave.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(66)))), ((int)(((byte)(66)))));
+            this.btnSave.Icon = ((System.Drawing.Image)(resources.GetObject("btnSave.Icon")));
+            this.btnSave.Location = new System.Drawing.Point(600, 574);
+            this.btnSave.MouseState = EASkins.MouseState.HOVER;
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Primary = true;
+            this.btnSave.Size = new System.Drawing.Size(86, 36);
+            this.btnSave.TabIndex = 85;
+            this.btnSave.Text = "保  存";
+            this.btnSave.UseVisualStyleBackColor = false;
+            this.btnSave.Click += new System.EventHandler(this.btnSavePoint_Click);
+            // 
             // ApplyTableSettingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(866, 692);
+            this.Controls.Add(this.btnSave);
             this.Controls.Add(this.flatField27);
             this.Controls.Add(this.flatField28);
             this.Controls.Add(this.flatField25);
@@ -544,7 +550,6 @@
             this.Controls.Add(this.flatField4);
             this.Controls.Add(this.flatField13);
             this.Controls.Add(this.flatField14);
-            this.Controls.Add(this.btnSavePoint);
             this.Controls.Add(this.flatField34);
             this.Controls.Add(this.flatField9);
             this.Controls.Add(this.flatField33);
@@ -564,7 +569,6 @@
             this.Controls.SetChildIndex(this.flatField33, 0);
             this.Controls.SetChildIndex(this.flatField9, 0);
             this.Controls.SetChildIndex(this.flatField34, 0);
-            this.Controls.SetChildIndex(this.btnSavePoint, 0);
             this.Controls.SetChildIndex(this.flatField14, 0);
             this.Controls.SetChildIndex(this.flatField13, 0);
             this.Controls.SetChildIndex(this.flatField4, 0);
@@ -587,7 +591,9 @@
             this.Controls.SetChildIndex(this.flatField25, 0);
             this.Controls.SetChildIndex(this.flatField28, 0);
             this.Controls.SetChildIndex(this.flatField27, 0);
+            this.Controls.SetChildIndex(this.btnSave, 0);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -595,7 +601,6 @@
 
         private CI.UIComponents.Filler.EntityFiller pointFiller;
         private CI.UIComponents.Validate.Validator pointValidator;
-        private EASkins.Ami_Button_1 btnSavePoint;
         private CI.Controls.FlatField flatField34;
         private CI.Controls.FlatField flatField9;
         private CI.Controls.FlatField flatField33;
@@ -626,5 +631,6 @@
         private CI.Controls.FlatField flatField26;
         private CI.Controls.FlatField flatField27;
         private CI.Controls.FlatField flatField28;
+        private EASkins.Controls.MaterialRaisedButton btnSave;
     }
 }

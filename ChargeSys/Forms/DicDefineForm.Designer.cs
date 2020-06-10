@@ -31,93 +31,17 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.btnDelete = new EASkins.Ami_Button_2();
-            this.btnModify = new EASkins.Ami_Button_2();
-            this.btnAdd = new EASkins.Ami_Button_2();
-            this.txtSeach = new EASkins.Ami_TextBox();
-            this.btnSearch = new EASkins.Ami_Button_2();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DicDefineForm));
             this.dgv = new System.Windows.Forms.DataGridView();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnModify = new EASkins.Controls.MaterialRaisedButton();
+            this.btnDelete = new EASkins.Controls.MaterialRaisedButton();
+            this.btnAdd = new EASkins.Controls.MaterialRaisedButton();
+            this.btnRefresh = new EASkins.Controls.MaterialRaisedButton();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             this.SuspendLayout();
-            // 
-            // btnDelete
-            // 
-            this.btnDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnDelete.BackColor = System.Drawing.Color.Transparent;
-            this.btnDelete.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
-            this.btnDelete.Image = null;
-            this.btnDelete.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDelete.Location = new System.Drawing.Point(841, 77);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(85, 30);
-            this.btnDelete.TabIndex = 19;
-            this.btnDelete.Text = "删 除";
-            this.btnDelete.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
-            // 
-            // btnModify
-            // 
-            this.btnModify.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnModify.BackColor = System.Drawing.Color.Transparent;
-            this.btnModify.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
-            this.btnModify.Image = null;
-            this.btnModify.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnModify.Location = new System.Drawing.Point(747, 77);
-            this.btnModify.Name = "btnModify";
-            this.btnModify.Size = new System.Drawing.Size(85, 30);
-            this.btnModify.TabIndex = 20;
-            this.btnModify.Text = "修 改";
-            this.btnModify.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.btnModify.Click += new System.EventHandler(this.btnModify_Click);
-            // 
-            // btnAdd
-            // 
-            this.btnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAdd.BackColor = System.Drawing.Color.Transparent;
-            this.btnAdd.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
-            this.btnAdd.Image = null;
-            this.btnAdd.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAdd.Location = new System.Drawing.Point(656, 77);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(85, 30);
-            this.btnAdd.TabIndex = 21;
-            this.btnAdd.Text = "添 加";
-            this.btnAdd.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
-            // 
-            // txtSeach
-            // 
-            this.txtSeach.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtSeach.BackColor = System.Drawing.Color.Transparent;
-            this.txtSeach.Font = new System.Drawing.Font("Tahoma", 11F);
-            this.txtSeach.ForeColor = System.Drawing.Color.DimGray;
-            this.txtSeach.Location = new System.Drawing.Point(392, 77);
-            this.txtSeach.MaxLength = 32767;
-            this.txtSeach.Multiline = false;
-            this.txtSeach.Name = "txtSeach";
-            this.txtSeach.ReadOnly = false;
-            this.txtSeach.Size = new System.Drawing.Size(154, 28);
-            this.txtSeach.TabIndex = 18;
-            this.txtSeach.TextAlignment = System.Windows.Forms.HorizontalAlignment.Left;
-            this.txtSeach.UseSystemPasswordChar = false;
-            // 
-            // btnSearch
-            // 
-            this.btnSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSearch.BackColor = System.Drawing.Color.Transparent;
-            this.btnSearch.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
-            this.btnSearch.Image = null;
-            this.btnSearch.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSearch.Location = new System.Drawing.Point(562, 77);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(85, 30);
-            this.btnSearch.TabIndex = 17;
-            this.btnSearch.Text = "查  询";
-            this.btnSearch.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // dgv
             // 
@@ -179,41 +103,114 @@
             this.Column2.Name = "Column2";
             this.Column2.ReadOnly = true;
             // 
+            // btnModify
+            // 
+            this.btnModify.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnModify.AutoSize = true;
+            this.btnModify.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnModify.BackColor = System.Drawing.Color.White;
+            this.btnModify.Depth = 0;
+            this.btnModify.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(66)))), ((int)(((byte)(66)))));
+            this.btnModify.Icon = ((System.Drawing.Image)(resources.GetObject("btnModify.Icon")));
+            this.btnModify.Location = new System.Drawing.Point(731, 70);
+            this.btnModify.MouseState = EASkins.MouseState.HOVER;
+            this.btnModify.Name = "btnModify";
+            this.btnModify.Primary = true;
+            this.btnModify.Size = new System.Drawing.Size(86, 36);
+            this.btnModify.TabIndex = 63;
+            this.btnModify.Text = "修  改";
+            this.btnModify.UseVisualStyleBackColor = false;
+            this.btnModify.Click += new System.EventHandler(this.btnModify_Click);
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDelete.AutoSize = true;
+            this.btnDelete.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnDelete.BackColor = System.Drawing.Color.White;
+            this.btnDelete.Depth = 0;
+            this.btnDelete.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(66)))), ((int)(((byte)(66)))));
+            this.btnDelete.Icon = ((System.Drawing.Image)(resources.GetObject("btnDelete.Icon")));
+            this.btnDelete.Location = new System.Drawing.Point(827, 70);
+            this.btnDelete.MouseState = EASkins.MouseState.HOVER;
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Primary = true;
+            this.btnDelete.Size = new System.Drawing.Size(86, 36);
+            this.btnDelete.TabIndex = 62;
+            this.btnDelete.Text = "删  除";
+            this.btnDelete.UseVisualStyleBackColor = false;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAdd.AutoSize = true;
+            this.btnAdd.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnAdd.BackColor = System.Drawing.Color.White;
+            this.btnAdd.Depth = 0;
+            this.btnAdd.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(66)))), ((int)(((byte)(66)))));
+            this.btnAdd.Icon = ((System.Drawing.Image)(resources.GetObject("btnAdd.Icon")));
+            this.btnAdd.Location = new System.Drawing.Point(635, 70);
+            this.btnAdd.MouseState = EASkins.MouseState.HOVER;
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Primary = true;
+            this.btnAdd.Size = new System.Drawing.Size(86, 36);
+            this.btnAdd.TabIndex = 61;
+            this.btnAdd.Text = "添  加";
+            this.btnAdd.UseVisualStyleBackColor = false;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
+            // btnRefresh
+            // 
+            this.btnRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnRefresh.AutoSize = true;
+            this.btnRefresh.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnRefresh.BackColor = System.Drawing.Color.White;
+            this.btnRefresh.Depth = 0;
+            this.btnRefresh.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(66)))), ((int)(((byte)(66)))));
+            this.btnRefresh.Icon = ((System.Drawing.Image)(resources.GetObject("btnRefresh.Icon")));
+            this.btnRefresh.Location = new System.Drawing.Point(539, 70);
+            this.btnRefresh.MouseState = EASkins.MouseState.HOVER;
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Primary = true;
+            this.btnRefresh.Size = new System.Drawing.Size(86, 36);
+            this.btnRefresh.TabIndex = 60;
+            this.btnRefresh.Text = "刷  新";
+            this.btnRefresh.UseVisualStyleBackColor = false;
+            this.btnRefresh.Click += new System.EventHandler(this.btnSearch_Click);
+            // 
             // DicDefineForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(931, 559);
-            this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnModify);
+            this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnAdd);
-            this.Controls.Add(this.txtSeach);
-            this.Controls.Add(this.btnSearch);
+            this.Controls.Add(this.btnRefresh);
             this.Controls.Add(this.dgv);
             this.Name = "DicDefineForm";
             this.Text = "DicDefineForm";
             this.Title = "字典定义";
             this.Controls.SetChildIndex(this.dgv, 0);
-            this.Controls.SetChildIndex(this.btnSearch, 0);
-            this.Controls.SetChildIndex(this.txtSeach, 0);
+            this.Controls.SetChildIndex(this.btnRefresh, 0);
             this.Controls.SetChildIndex(this.btnAdd, 0);
-            this.Controls.SetChildIndex(this.btnModify, 0);
             this.Controls.SetChildIndex(this.btnDelete, 0);
+            this.Controls.SetChildIndex(this.btnModify, 0);
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
-
-        private EASkins.Ami_Button_2 btnDelete;
-        private EASkins.Ami_Button_2 btnModify;
-        private EASkins.Ami_Button_2 btnAdd;
-        private EASkins.Ami_TextBox txtSeach;
-        private EASkins.Ami_Button_2 btnSearch;
         private System.Windows.Forms.DataGridView dgv;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private EASkins.Controls.MaterialRaisedButton btnModify;
+        private EASkins.Controls.MaterialRaisedButton btnDelete;
+        private EASkins.Controls.MaterialRaisedButton btnAdd;
+        private EASkins.Controls.MaterialRaisedButton btnRefresh;
     }
 }

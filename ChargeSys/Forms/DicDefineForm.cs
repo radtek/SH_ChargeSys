@@ -23,12 +23,16 @@ namespace ChargeSys.Main.Forms
         public DicDefineForm()
         {
             InitializeComponent();
+            btnSearch_Click(null,null);
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
             DicDefineOptForm form = new DicDefineOptForm();
-            form.ShowDialog(this);
+            if (form.ShowDialog(this) == DialogResult.OK)
+            {
+                btnSearch_Click(null, null);
+            }
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
@@ -105,7 +109,10 @@ namespace ChargeSys.Main.Forms
                 }
                 ConstantDefine entity = CGridHelper.GetCurrentData<ConstantDefine>(dgv);
                 DicDefineOptForm form = new DicDefineOptForm(entity);
-                form.ShowDialog();
+                if (form.ShowDialog(this) == DialogResult.OK)
+                {
+                    btnSearch_Click(null, null);
+                }
             }
             catch (Exception ex)
             {

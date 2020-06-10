@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ChargeForm));
             this.btnTest = new EASkins.Controls.MaterialRaisedButton();
             this.btnSave = new EASkins.Controls.MaterialRaisedButton();
             this.materialListView1 = new EASkins.Controls.MaterialListView();
@@ -46,6 +47,8 @@
             this.txtOtherFee = new CI.Controls.FlatField();
             this.txtOtherFeeRemark = new CI.Controls.FlatField();
             this.chargeFiller = new CI.UIComponents.Filler.EntityFiller();
+            this.btnPrint = new EASkins.Controls.MaterialRaisedButton();
+            this.btnClear = new EASkins.Controls.MaterialRaisedButton();
             this.SuspendLayout();
             // 
             // btnTest
@@ -67,16 +70,15 @@
             // 
             // btnSave
             // 
-            this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSave.AutoSize = true;
             this.btnSave.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnSave.Depth = 0;
-            this.btnSave.Icon = null;
-            this.btnSave.Location = new System.Drawing.Point(590, 310);
+            this.btnSave.Icon = ((System.Drawing.Image)(resources.GetObject("btnSave.Icon")));
+            this.btnSave.Location = new System.Drawing.Point(510, 286);
             this.btnSave.MouseState = EASkins.MouseState.HOVER;
             this.btnSave.Name = "btnSave";
             this.btnSave.Primary = true;
-            this.btnSave.Size = new System.Drawing.Size(55, 36);
+            this.btnSave.Size = new System.Drawing.Size(83, 36);
             this.btnSave.TabIndex = 21;
             this.btnSave.Text = "保 存";
             this.btnSave.UseVisualStyleBackColor = true;
@@ -218,16 +220,15 @@
             // 
             // btnCall
             // 
-            this.btnCall.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCall.AutoSize = true;
             this.btnCall.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnCall.Depth = 0;
-            this.btnCall.Icon = null;
-            this.btnCall.Location = new System.Drawing.Point(468, 310);
+            this.btnCall.Icon = ((System.Drawing.Image)(resources.GetObject("btnCall.Icon")));
+            this.btnCall.Location = new System.Drawing.Point(406, 286);
             this.btnCall.MouseState = EASkins.MouseState.HOVER;
             this.btnCall.Name = "btnCall";
             this.btnCall.Primary = true;
-            this.btnCall.Size = new System.Drawing.Size(55, 36);
+            this.btnCall.Size = new System.Drawing.Size(83, 36);
             this.btnCall.TabIndex = 24;
             this.btnCall.Text = "叫 号";
             this.btnCall.UseVisualStyleBackColor = true;
@@ -261,11 +262,49 @@
             this.txtOtherFeeRemark.Size = new System.Drawing.Size(447, 28);
             this.txtOtherFeeRemark.TabIndex = 26;
             // 
+            // btnPrint
+            // 
+            this.btnPrint.AutoSize = true;
+            this.btnPrint.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnPrint.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.btnPrint.Depth = 0;
+            this.btnPrint.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(66)))), ((int)(((byte)(66)))));
+            this.btnPrint.Icon = ((System.Drawing.Image)(resources.GetObject("btnPrint.Icon")));
+            this.btnPrint.Location = new System.Drawing.Point(614, 286);
+            this.btnPrint.MouseState = EASkins.MouseState.HOVER;
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Primary = true;
+            this.btnPrint.Size = new System.Drawing.Size(86, 36);
+            this.btnPrint.TabIndex = 52;
+            this.btnPrint.Text = "打  印";
+            this.btnPrint.UseVisualStyleBackColor = false;
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
+            // 
+            // btnClear
+            // 
+            this.btnClear.AutoSize = true;
+            this.btnClear.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnClear.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.btnClear.Depth = 0;
+            this.btnClear.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(66)))), ((int)(((byte)(66)))));
+            this.btnClear.Icon = ((System.Drawing.Image)(resources.GetObject("btnClear.Icon")));
+            this.btnClear.Location = new System.Drawing.Point(721, 286);
+            this.btnClear.MouseState = EASkins.MouseState.HOVER;
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Primary = true;
+            this.btnClear.Size = new System.Drawing.Size(86, 36);
+            this.btnClear.TabIndex = 53;
+            this.btnClear.Text = "清  除";
+            this.btnClear.UseVisualStyleBackColor = false;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            // 
             // ChargeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(882, 539);
+            this.Controls.Add(this.btnClear);
+            this.Controls.Add(this.btnPrint);
             this.Controls.Add(this.txtOtherFeeRemark);
             this.Controls.Add(this.txtOtherFee);
             this.Controls.Add(this.btnCall);
@@ -297,6 +336,8 @@
             this.Controls.SetChildIndex(this.btnCall, 0);
             this.Controls.SetChildIndex(this.txtOtherFee, 0);
             this.Controls.SetChildIndex(this.txtOtherFeeRemark, 0);
+            this.Controls.SetChildIndex(this.btnPrint, 0);
+            this.Controls.SetChildIndex(this.btnClear, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -322,5 +363,7 @@
         private CI.Controls.FlatField txtOtherFee;
         private CI.Controls.FlatField txtOtherFeeRemark;
         private CI.UIComponents.Filler.EntityFiller chargeFiller;
+        private EASkins.Controls.MaterialRaisedButton btnPrint;
+        private EASkins.Controls.MaterialRaisedButton btnClear;
     }
 }

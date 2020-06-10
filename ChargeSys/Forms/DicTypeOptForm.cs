@@ -69,5 +69,11 @@ namespace ChargeSys.Main.Forms
         {
 
         }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.Cancel;
+            this.Close();
+        }
     }
 }

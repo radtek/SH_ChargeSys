@@ -28,42 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnSave = new HZH_Controls.Controls.UCBtnExt();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DicTypeOptForm));
             this.label4 = new System.Windows.Forms.Label();
             this.entityFiller = new CI.UIComponents.Filler.EntityFiller();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox7 = new System.Windows.Forms.TextBox();
             this.validator1 = new CI.UIComponents.Validate.Validator();
             this.label3 = new System.Windows.Forms.Label();
+            this.btnCancel = new EASkins.Controls.MaterialRaisedButton();
+            this.btnSave = new EASkins.Controls.MaterialRaisedButton();
             this.SuspendLayout();
-            // 
-            // btnSave
-            // 
-            this.btnSave.BackColor = System.Drawing.Color.Transparent;
-            this.btnSave.BtnBackColor = System.Drawing.Color.Transparent;
-            this.btnSave.BtnFont = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnSave.BtnForeColor = System.Drawing.Color.White;
-            this.btnSave.BtnText = "保 存";
-            this.btnSave.ConerRadius = 10;
-            this.btnSave.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnSave.EnabledMouseEffect = true;
-            this.btnSave.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(136)))));
-            this.btnSave.Font = new System.Drawing.Font("微软雅黑", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.IsRadius = true;
-            this.btnSave.IsShowRect = false;
-            this.btnSave.IsShowTips = false;
-            this.btnSave.Location = new System.Drawing.Point(241, 255);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(0);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.RectColor = System.Drawing.Color.Gainsboro;
-            this.btnSave.RectWidth = 1;
-            this.btnSave.Size = new System.Drawing.Size(119, 46);
-            this.btnSave.TabIndex = 17;
-            this.btnSave.TabStop = false;
-            this.btnSave.TipsColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(30)))), ((int)(((byte)(99)))));
-            this.btnSave.TipsText = "";
-            this.btnSave.BtnClick += new System.EventHandler(this.btnSave_BtnClick);
             // 
             // label4
             // 
@@ -105,37 +79,76 @@
             this.label3.TabIndex = 21;
             this.label3.Text = "类型";
             // 
+            // btnCancel
+            // 
+            this.btnCancel.AutoSize = true;
+            this.btnCancel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnCancel.BackColor = System.Drawing.Color.White;
+            this.btnCancel.Depth = 0;
+            this.btnCancel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(66)))), ((int)(((byte)(66)))));
+            this.btnCancel.Icon = ((System.Drawing.Image)(resources.GetObject("btnCancel.Icon")));
+            this.btnCancel.Location = new System.Drawing.Point(169, 258);
+            this.btnCancel.MouseState = EASkins.MouseState.HOVER;
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Primary = true;
+            this.btnCancel.Size = new System.Drawing.Size(86, 36);
+            this.btnCancel.TabIndex = 58;
+            this.btnCancel.Text = "取  消";
+            this.btnCancel.UseVisualStyleBackColor = false;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
+            // btnSave
+            // 
+            this.btnSave.AutoSize = true;
+            this.btnSave.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnSave.BackColor = System.Drawing.Color.White;
+            this.btnSave.Depth = 0;
+            this.btnSave.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(66)))), ((int)(((byte)(66)))));
+            this.btnSave.Icon = ((System.Drawing.Image)(resources.GetObject("btnSave.Icon")));
+            this.btnSave.Location = new System.Drawing.Point(274, 258);
+            this.btnSave.MouseState = EASkins.MouseState.HOVER;
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Primary = true;
+            this.btnSave.Size = new System.Drawing.Size(86, 36);
+            this.btnSave.TabIndex = 57;
+            this.btnSave.Text = "保  存";
+            this.btnSave.UseVisualStyleBackColor = false;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_BtnClick);
+            // 
             // DicTypeOptForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(455, 342);
+            this.Controls.Add(this.btnCancel);
+            this.Controls.Add(this.btnSave);
             this.Controls.Add(this.textBox7);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.btnSave);
             this.Name = "DicTypeOptForm";
             this.Text = "InputLambdaForm";
             this.Title = "类型配置";
             this.Load += new System.EventHandler(this.ValChangeOptForm_Load);
-            this.Controls.SetChildIndex(this.btnSave, 0);
             this.Controls.SetChildIndex(this.label4, 0);
             this.Controls.SetChildIndex(this.label3, 0);
             this.Controls.SetChildIndex(this.textBox3, 0);
             this.Controls.SetChildIndex(this.textBox7, 0);
+            this.Controls.SetChildIndex(this.btnSave, 0);
+            this.Controls.SetChildIndex(this.btnCancel, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private HZH_Controls.Controls.UCBtnExt btnSave;
         private System.Windows.Forms.Label label4;
         private CI.UIComponents.Filler.EntityFiller entityFiller;
         private System.Windows.Forms.TextBox textBox3;
         private CI.UIComponents.Validate.Validator validator1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox textBox7;
+        private EASkins.Controls.MaterialRaisedButton btnCancel;
+        private EASkins.Controls.MaterialRaisedButton btnSave;
     }
 }

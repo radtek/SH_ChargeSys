@@ -68,6 +68,8 @@ namespace ChargeSys.Common.Dtos
         public string CallUrl { get; set; }
 
         public string WindowAddr { get; set; }
+
+        public string ApiUrl { get; set; }
      
     }
 }

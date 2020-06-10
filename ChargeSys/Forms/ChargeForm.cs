@@ -232,5 +232,16 @@ namespace ChargeSys.Main.Forms
         {
             CalTotalPrice();
         }
+
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            Clear();
+
+        }
     }
 }

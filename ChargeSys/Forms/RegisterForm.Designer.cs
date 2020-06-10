@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RegisterForm));
             this.carFiller = new CI.UIComponents.Filler.EntityFiller();
             this.txtCarType = new CI.Controls.FlatField();
             this.flatField46 = new CI.Controls.FlatField();
@@ -386,7 +387,7 @@
             this.flatField36.Font = new System.Drawing.Font("宋体", 12F);
             this.flatField36.Location = new System.Drawing.Point(12, 448);
             this.flatField36.Name = "flatField36";
-            this.flatField36.Size = new System.Drawing.Size(548, 28);
+            this.flatField36.Size = new System.Drawing.Size(457, 28);
             this.flatField36.TabIndex = 36;
             // 
             // emi_Separator1
@@ -479,16 +480,18 @@
             // 
             this.btnPrint.AutoSize = true;
             this.btnPrint.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnPrint.BackColor = System.Drawing.Color.CornflowerBlue;
             this.btnPrint.Depth = 0;
-            this.btnPrint.Icon = null;
-            this.btnPrint.Location = new System.Drawing.Point(744, 218);
+            this.btnPrint.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(66)))), ((int)(((byte)(66)))));
+            this.btnPrint.Icon = ((System.Drawing.Image)(resources.GetObject("btnPrint.Icon")));
+            this.btnPrint.Location = new System.Drawing.Point(673, 63);
             this.btnPrint.MouseState = EASkins.MouseState.HOVER;
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Primary = true;
-            this.btnPrint.Size = new System.Drawing.Size(58, 36);
+            this.btnPrint.Size = new System.Drawing.Size(86, 36);
             this.btnPrint.TabIndex = 51;
             this.btnPrint.Text = "打  印";
-            this.btnPrint.UseVisualStyleBackColor = true;
+            this.btnPrint.UseVisualStyleBackColor = false;
             this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
             // 
             // materialRaisedButton1
@@ -496,12 +499,12 @@
             this.materialRaisedButton1.AutoSize = true;
             this.materialRaisedButton1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.materialRaisedButton1.Depth = 0;
-            this.materialRaisedButton1.Icon = null;
-            this.materialRaisedButton1.Location = new System.Drawing.Point(597, 63);
+            this.materialRaisedButton1.Icon = ((System.Drawing.Image)(resources.GetObject("materialRaisedButton1.Icon")));
+            this.materialRaisedButton1.Location = new System.Drawing.Point(576, 63);
             this.materialRaisedButton1.MouseState = EASkins.MouseState.HOVER;
             this.materialRaisedButton1.Name = "materialRaisedButton1";
             this.materialRaisedButton1.Primary = true;
-            this.materialRaisedButton1.Size = new System.Drawing.Size(58, 36);
+            this.materialRaisedButton1.Size = new System.Drawing.Size(86, 36);
             this.materialRaisedButton1.TabIndex = 52;
             this.materialRaisedButton1.Text = "查  询";
             this.materialRaisedButton1.UseVisualStyleBackColor = true;
@@ -548,12 +551,12 @@
             this.btnReadIDCard.AutoSize = true;
             this.btnReadIDCard.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnReadIDCard.Depth = 0;
-            this.btnReadIDCard.Icon = null;
-            this.btnReadIDCard.Location = new System.Drawing.Point(599, 218);
+            this.btnReadIDCard.Icon = ((System.Drawing.Image)(resources.GetObject("btnReadIDCard.Icon")));
+            this.btnReadIDCard.Location = new System.Drawing.Point(475, 440);
             this.btnReadIDCard.MouseState = EASkins.MouseState.HOVER;
             this.btnReadIDCard.Name = "btnReadIDCard";
             this.btnReadIDCard.Primary = true;
-            this.btnReadIDCard.Size = new System.Drawing.Size(58, 36);
+            this.btnReadIDCard.Size = new System.Drawing.Size(86, 36);
             this.btnReadIDCard.TabIndex = 55;
             this.btnReadIDCard.Text = "读  卡";
             this.btnReadIDCard.UseVisualStyleBackColor = true;

@@ -25,6 +25,7 @@ namespace ChargeSys.Main.Forms
         public DicTypeForm()
         {
             InitializeComponent();
+            btnSearch_Click(null,null);
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
@@ -98,7 +99,10 @@ namespace ChargeSys.Main.Forms
         private void btnAdd_Click(object sender, EventArgs e)
         {
             DicTypeOptForm form = new DicTypeOptForm();
-            form.ShowDialog(this);
+            if (form.ShowDialog(this) == DialogResult.OK)
+            {
+                btnSearch_Click(null, null);
+            }
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -144,7 +148,10 @@ namespace ChargeSys.Main.Forms
                 }
                 ConstantType entity = CGridHelper.GetCurrentData<ConstantType>(dgv);
                 DicTypeOptForm form = new DicTypeOptForm(entity);
-                form.ShowDialog();
+                if (form.ShowDialog(this) == DialogResult.OK)
+                {
+                    btnSearch_Click(null, null);
+                }
             }
             catch (Exception ex)
             {

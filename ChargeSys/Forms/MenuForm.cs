@@ -25,6 +25,8 @@ namespace ChargeSys.Main.Forms
         public MenuForm()
         {
             InitializeComponent();
+            btnSearch_Click(null,null);
+
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
@@ -128,6 +130,7 @@ namespace ChargeSys.Main.Forms
                 Menus entity = CGridHelper.GetCurrentData<Menus>(dgv);
                 MenuOptForm form = new MenuOptForm(entity);
                 form.ShowDialog();
+              
             }
             catch (Exception ex)
             {

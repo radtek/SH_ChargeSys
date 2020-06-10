@@ -64,7 +64,7 @@
             this.tvMenu.ShowLines = false;
             this.tvMenu.ShowPlusMinus = false;
             this.tvMenu.ShowRootLines = false;
-            this.tvMenu.Size = new System.Drawing.Size(194, 579);
+            this.tvMenu.Size = new System.Drawing.Size(194, 637);
             this.tvMenu.TabIndex = 1;
             this.tvMenu.TipFont = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.tvMenu.TipImage = ((System.Drawing.Image)(resources.GetObject("tvMenu.TipImage")));
@@ -73,9 +73,9 @@
             // 
             this.emi_Separator1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.emi_Separator1.Location = new System.Drawing.Point(0, 643);
+            this.emi_Separator1.Location = new System.Drawing.Point(0, 701);
             this.emi_Separator1.Name = "emi_Separator1";
-            this.emi_Separator1.Size = new System.Drawing.Size(1088, 10);
+            this.emi_Separator1.Size = new System.Drawing.Size(1129, 10);
             this.emi_Separator1.TabIndex = 2;
             this.emi_Separator1.Text = "emi_Separator1";
             // 
@@ -88,7 +88,7 @@
             this.panControl.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.panControl.Location = new System.Drawing.Point(194, 65);
             this.panControl.Name = "panControl";
-            this.panControl.Size = new System.Drawing.Size(892, 576);
+            this.panControl.Size = new System.Drawing.Size(933, 634);
             this.panControl.TabIndex = 3;
             // 
             // labUser
@@ -106,7 +106,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1088, 671);
+            this.ClientSize = new System.Drawing.Size(1129, 729);
             this.Controls.Add(this.labUser);
             this.Controls.Add(this.panControl);
             this.Controls.Add(this.emi_Separator1);

@@ -25,6 +25,7 @@ namespace ChargeSys.Main.Forms
         public RoleForm()
         {
             InitializeComponent();
+            btnSearch_Click(null,null);
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
@@ -87,7 +88,10 @@ namespace ChargeSys.Main.Forms
         private void btnAdd_Click(object sender, EventArgs e)
         {
             RoleOptForm form = new RoleOptForm();
-            form.ShowDialog(this);
+            if (form.ShowDialog(this) == DialogResult.OK)
+            {
+                btnSearch_Click(null, null);
+            }
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -129,7 +133,10 @@ namespace ChargeSys.Main.Forms
                 }
                 Role entity = CGridHelper.GetCurrentData<Role>(dgv);
                 RoleOptForm form = new RoleOptForm(entity);
-                form.ShowDialog();
+                if (form.ShowDialog(this) == DialogResult.OK)
+                {
+                    btnSearch_Click(null, null);
+                }
             }
             catch (Exception ex)
             {
