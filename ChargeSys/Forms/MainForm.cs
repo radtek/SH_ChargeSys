@@ -24,7 +24,7 @@ namespace ChargeSys.Main.Forms
 {
     public partial class MainForm : MaterialForm
     {
-        private List<SysMenu> _list = new List<SysMenu>();
+        private List<Menus> _list = new List<Menus>();
         private List<Menus> _menus = new List<Menus>();
 
         private Dictionary<string, Control> m_dicControl = new Dictionary<string, Control>();
@@ -34,9 +34,9 @@ namespace ChargeSys.Main.Forms
         {
             InitializeComponent();
             AppHelper.MainForm = this;
-            _list = JsonConvert.DeserializeObject<List<SysMenu>>(File.ReadAllText("MenuConfig.json")); //加载菜单列表
+            _list = JsonConvert.DeserializeObject<List<Menus>>(File.ReadAllText("MenuConfig.json")); //加载菜单列表
             MenuApi menuApi = new MenuApi();
-            var response = menuApi.GetMenuByUser(3);
+            var response = menuApi.GetMenuByUser(AppHelper.UserId);
             if (response.Code == 1 && response.DataCount > 0)
             {
                 _menus = JsonConvert.DeserializeObject<List<Menus>>(response.Data.ToString());
@@ -113,6 +113,11 @@ namespace ChargeSys.Main.Forms
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             ScanService.Close();
+        }
+
+        private void MainForm_Shown(object sender, EventArgs e)
+        {
+            labUser.Text = AppHelper.UserName;
         }
     }
 }

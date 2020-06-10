@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using VehicleManagerSys.Main.CustomForms;
 
 namespace ChargeSys.Main
 {
@@ -35,9 +36,15 @@ namespace ChargeSys.Main
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
                 AppHelper.GetInstance();
-                AppHelper.DB.Init("","","","");
                 Application.DoEvents();
-                Application.Run(new MainForm());
+                LoginForm loginForm = new LoginForm();
+                DialogResult dialogResult = loginForm.ShowDialog();
+                if (dialogResult == DialogResult.OK)
+                {
+                    Application.Run(new MainForm());
+                }
+                else
+                    Environment.Exit(0);
             }
 
 

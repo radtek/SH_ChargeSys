@@ -29,9 +29,9 @@ namespace ChargeSys.Common
         public static SettingEntity AppSetting = new SettingEntity();
         public static PrintPoint PointSetting = new PrintPoint();
         public static ApplyTableSetting ApplyPointSetting = new ApplyTableSetting();
-        public static MssqlHelper DB = MssqlHelper.GetInstance();
 
-        public static string UserId = "-1";
+        public static int UserId = -1;
+        public static string UserName = "";
 
         public static volatile object AppLocker = new object();
         static AppHelper()

@@ -19,6 +19,7 @@ namespace ChargeSys.Main.Api
         /// </summary>
         public const string APPLICATION_JSON = "application/json";
 
+        //private static string BaseUrl = "http://192.168.2.235:8088/api/"; 
         private static string BaseUrl = "http://localhost:5000/api/";
 
         public ResponseModel ReqGet(string url, Hashtable hashtable)

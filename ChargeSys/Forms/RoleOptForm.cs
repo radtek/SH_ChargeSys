@@ -46,7 +46,7 @@ namespace ChargeSys.Main.Forms
         private void Init()
         {
             MenuApi menuApi = new MenuApi();
-            var response = menuApi.GetMenus();
+            var response = menuApi.GetMenuByUser(AppHelper.UserId);
             if (response.Code == 1 && response.DataCount > 0)
             {
                 List<Menus> menuList = JsonConvert.DeserializeObject<List<Menus>>(response.Data?.ToString());
@@ -86,6 +86,20 @@ namespace ChargeSys.Main.Forms
                var  responseModel = rbac.SaveRole(m_role);
                 if (responseModel.Code == 1)
                 {
+                    Role role = JsonConvert.DeserializeObject<Role>(responseModel.Data.ToString());
+                    //保存角色信息
+                    List<int> roleIds = new List<int>();
+                    List<RoleMenuMap> roleMenuMaps = new List<RoleMenuMap>();
+                    GetCheckedMenuIds(tvMenus.Nodes, roleIds);
+                    foreach (var item in roleIds)
+                    {
+                        roleMenuMaps.Add(new RoleMenuMap()
+                        {
+                            RoleId = role.Id,
+                            MenuId = item
+                        });
+                    }
+                    rbac.SaveRoleMenu(roleMenuMaps.ToArray());
                     FrmTips.ShowTipsSuccess(AppHelper.MainForm, "保存成功！", ContentAlignment.MiddleCenter, 1000);
                     bIsUpdate = true;
                     this.DialogResult = DialogResult.OK;

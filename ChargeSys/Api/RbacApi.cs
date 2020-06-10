@@ -87,6 +87,7 @@ namespace ChargeSys.Main.Api
             return apiHelper.ReqPost("Rbac/SaveRoleMenu", roleMenuMaps);
         }
 
+
         #endregion
 
         #region Permission
@@ -103,6 +104,14 @@ namespace ChargeSys.Main.Api
         }
         #endregion
 
+
+        public ResponseModel UserLogin(string account, string password)
+        {
+            Hashtable hashtable = new Hashtable();
+            hashtable.Add("account", account);
+            hashtable.Add("password", password);
+            return apiHelper.ReqGet("Rbac/UserLogin", hashtable);
+        }
         #region Role-Permission
         #endregion
     }

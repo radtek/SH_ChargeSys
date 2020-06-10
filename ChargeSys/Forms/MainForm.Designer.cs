@@ -32,6 +32,7 @@
             this.tvMenu = new HZH_Controls.Controls.TreeViewEx();
             this.emi_Separator1 = new EASkins.Emi_Separator();
             this.panControl = new System.Windows.Forms.Panel();
+            this.labUser = new EASkins.Ami_HeaderLabel();
             this.SuspendLayout();
             // 
             // tvMenu
@@ -90,18 +91,32 @@
             this.panControl.Size = new System.Drawing.Size(892, 576);
             this.panControl.TabIndex = 3;
             // 
+            // labUser
+            // 
+            this.labUser.AutoSize = true;
+            this.labUser.BackColor = System.Drawing.Color.Transparent;
+            this.labUser.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
+            this.labUser.ForeColor = System.Drawing.Color.White;
+            this.labUser.Location = new System.Drawing.Point(12, 32);
+            this.labUser.Name = "labUser";
+            this.labUser.Size = new System.Drawing.Size(0, 20);
+            this.labUser.TabIndex = 4;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1088, 671);
+            this.Controls.Add(this.labUser);
             this.Controls.Add(this.panControl);
             this.Controls.Add(this.emi_Separator1);
             this.Controls.Add(this.tvMenu);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
+            this.Shown += new System.EventHandler(this.MainForm_Shown);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -110,6 +125,7 @@
         private HZH_Controls.Controls.TreeViewEx tvMenu;
         private EASkins.Emi_Separator emi_Separator1;
         private System.Windows.Forms.Panel panControl;
+        private EASkins.Ami_HeaderLabel labUser;
     }
 }
 
