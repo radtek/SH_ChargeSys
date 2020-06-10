@@ -41,7 +41,7 @@
             System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("节点2");
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserOptForm));
             this.entityFiller = new CI.UIComponents.Filler.EntityFiller();
-            this.flatField2 = new CI.Controls.FlatField();
+            this.txtAccount = new CI.Controls.FlatField();
             this.flatField1 = new CI.Controls.FlatField();
             this.flatField3 = new CI.Controls.FlatField();
             this.flatField4 = new CI.Controls.FlatField();
@@ -54,19 +54,19 @@
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
-            // flatField2
+            // txtAccount
             // 
-            this.flatField2.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.flatField2.BackColor = System.Drawing.Color.Transparent;
-            this.flatField2.Caption = "账号:     ";
-            this.flatField2.CaptionFont = new System.Drawing.Font("微软雅黑", 12F);
-            this.flatField2.CaptionWidth = 0;
-            this.entityFiller.SetEntityField(this.flatField2, new CI.UIComponents.Filler.TextEntry("UserAccount", ""));
-            this.flatField2.Font = new System.Drawing.Font("微软雅黑", 12F);
-            this.flatField2.Location = new System.Drawing.Point(11, 104);
-            this.flatField2.Name = "flatField2";
-            this.flatField2.Size = new System.Drawing.Size(267, 31);
-            this.flatField2.TabIndex = 18;
+            this.txtAccount.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txtAccount.BackColor = System.Drawing.Color.Transparent;
+            this.txtAccount.Caption = "账号:     ";
+            this.txtAccount.CaptionFont = new System.Drawing.Font("微软雅黑", 12F);
+            this.txtAccount.CaptionWidth = 0;
+            this.entityFiller.SetEntityField(this.txtAccount, new CI.UIComponents.Filler.TextEntry("UserAccount", ""));
+            this.txtAccount.Font = new System.Drawing.Font("微软雅黑", 12F);
+            this.txtAccount.Location = new System.Drawing.Point(11, 104);
+            this.txtAccount.Name = "txtAccount";
+            this.txtAccount.Size = new System.Drawing.Size(267, 31);
+            this.txtAccount.TabIndex = 18;
             // 
             // flatField1
             // 
@@ -198,6 +198,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(200)))), ((int)(((byte)(239)))));
             this.ClientSize = new System.Drawing.Size(624, 531);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSave);
@@ -205,12 +206,13 @@
             this.Controls.Add(this.flatField4);
             this.Controls.Add(this.flatField3);
             this.Controls.Add(this.flatField1);
-            this.Controls.Add(this.flatField2);
+            this.Controls.Add(this.txtAccount);
+            this.IsShowMaskDialog = false;
             this.Name = "UserOptForm";
             this.Text = "InputLambdaForm";
             this.Title = "用户管理";
             this.Load += new System.EventHandler(this.ValChangeOptForm_Load);
-            this.Controls.SetChildIndex(this.flatField2, 0);
+            this.Controls.SetChildIndex(this.txtAccount, 0);
             this.Controls.SetChildIndex(this.flatField1, 0);
             this.Controls.SetChildIndex(this.flatField3, 0);
             this.Controls.SetChildIndex(this.flatField4, 0);
@@ -227,7 +229,7 @@
         #endregion
         private CI.UIComponents.Filler.EntityFiller entityFiller;
         private CI.UIComponents.Validate.Validator validator1;
-        private CI.Controls.FlatField flatField2;
+        private CI.Controls.FlatField txtAccount;
         private CI.Controls.FlatField flatField1;
         private CI.Controls.FlatField flatField3;
         private CI.Controls.FlatField flatField4;

@@ -42,6 +42,7 @@ namespace ChargeSys.Main.Forms
             m_user = user;
             IsModify = true;
             entityFiller.DisplayEntity(m_user);
+            txtAccount.Enabled = false;
         }
 
         private void Init()

@@ -40,6 +40,8 @@ namespace ChargeSys.Main.Forms
             Init();
             IsModify = true;
             entityFiller.DisplayEntity(m_menus);
+            combMenus.SelectedText = m_menus.ParentName;
+            combMenus.SelectedValue = m_menus.ParentId;
         }
 
         public bool IsUpdate { get { return bIsUpdate; } }

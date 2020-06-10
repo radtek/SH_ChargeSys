@@ -31,7 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ChargeDefineOptForm));
             this.entityFiller = new CI.UIComponents.Filler.EntityFiller();
             this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txtTimes = new System.Windows.Forms.TextBox();
             this.validator1 = new CI.UIComponents.Validate.Validator();
             this.label3 = new System.Windows.Forms.Label();
             this.combDefine = new System.Windows.Forms.ComboBox();
@@ -51,14 +51,14 @@
             this.validator1.SetTaget(this.textBox7, new CI.UIComponents.Validate.TextTaget(new CI.UIComponents.Validate.BaseValidator[] {
                 ((CI.UIComponents.Validate.BaseValidator)(new CI.UIComponents.Validate.RequiredFieldValidator("", "")))}));
             // 
-            // textBox3
+            // txtTimes
             // 
-            this.entityFiller.SetEntityField(this.textBox3, new CI.UIComponents.Filler.TextEntry("Times", ""));
-            this.textBox3.Location = new System.Drawing.Point(89, 182);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(271, 23);
-            this.textBox3.TabIndex = 31;
-            this.validator1.SetTaget(this.textBox3, new CI.UIComponents.Validate.TextTaget(new CI.UIComponents.Validate.BaseValidator[] {
+            this.entityFiller.SetEntityField(this.txtTimes, new CI.UIComponents.Filler.TextEntry("Times", ""));
+            this.txtTimes.Location = new System.Drawing.Point(89, 182);
+            this.txtTimes.Name = "txtTimes";
+            this.txtTimes.Size = new System.Drawing.Size(271, 23);
+            this.txtTimes.TabIndex = 31;
+            this.validator1.SetTaget(this.txtTimes, new CI.UIComponents.Validate.TextTaget(new CI.UIComponents.Validate.BaseValidator[] {
                 ((CI.UIComponents.Validate.BaseValidator)(new CI.UIComponents.Validate.RequiredFieldValidator("不能为空！", "")))}));
             // 
             // label3
@@ -140,15 +140,17 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(200)))), ((int)(((byte)(239)))));
             this.ClientSize = new System.Drawing.Size(470, 370);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.textBox7);
-            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.txtTimes);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.combDefine);
             this.Controls.Add(this.label3);
+            this.IsShowMaskDialog = false;
             this.Name = "ChargeDefineOptForm";
             this.Text = "InputLambdaForm";
             this.Title = "收费配置";
@@ -157,7 +159,7 @@
             this.Controls.SetChildIndex(this.combDefine, 0);
             this.Controls.SetChildIndex(this.label4, 0);
             this.Controls.SetChildIndex(this.label1, 0);
-            this.Controls.SetChildIndex(this.textBox3, 0);
+            this.Controls.SetChildIndex(this.txtTimes, 0);
             this.Controls.SetChildIndex(this.textBox7, 0);
             this.Controls.SetChildIndex(this.btnSave, 0);
             this.Controls.SetChildIndex(this.btnCancel, 0);
@@ -172,7 +174,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox combDefine;
         private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txtTimes;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label4;
         private EASkins.Controls.MaterialRaisedButton btnCancel;

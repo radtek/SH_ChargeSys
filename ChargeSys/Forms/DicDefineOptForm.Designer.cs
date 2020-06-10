@@ -104,7 +104,7 @@
             // 
             this.btnCancel.AutoSize = true;
             this.btnCancel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnCancel.BackColor = System.Drawing.Color.White;
+            this.btnCancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(200)))), ((int)(((byte)(239)))));
             this.btnCancel.Depth = 0;
             this.btnCancel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(66)))), ((int)(((byte)(66)))));
             this.btnCancel.Icon = ((System.Drawing.Image)(resources.GetObject("btnCancel.Icon")));
@@ -140,6 +140,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(200)))), ((int)(((byte)(239)))));
             this.ClientSize = new System.Drawing.Size(368, 370);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSave);
@@ -149,6 +150,7 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.combDefine);
             this.Controls.Add(this.label3);
+            this.IsShowMaskDialog = false;
             this.Name = "DicDefineOptForm";
             this.Text = "InputLambdaForm";
             this.Title = "常量配置";

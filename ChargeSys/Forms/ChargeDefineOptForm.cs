@@ -41,6 +41,10 @@ namespace ChargeSys.Main.Forms
             entityFiller.DisplayEntity(m_chargeDefine);
             combDefine.SelectedText = m_chargeDefine.ItemName;
             combDefine.SelectedValue = m_chargeDefine.ItemCode;
+
+            txtTimes.Enabled = false;
+            combDefine.Enabled = false;
+
         }
 
         public bool IsUpdate { get { return bIsUpdate; } }

@@ -41,7 +41,7 @@
             System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("节点2");
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RoleOptForm));
             this.entityFiller = new CI.UIComponents.Filler.EntityFiller();
-            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.txtRoleName = new System.Windows.Forms.TextBox();
             this.validator1 = new CI.UIComponents.Validate.Validator();
             this.label3 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -52,14 +52,14 @@
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
-            // textBox7
+            // txtRoleName
             // 
-            this.entityFiller.SetEntityField(this.textBox7, new CI.UIComponents.Filler.TextEntry("RoleName", ""));
-            this.textBox7.Location = new System.Drawing.Point(43, 103);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(317, 23);
-            this.textBox7.TabIndex = 26;
-            this.validator1.SetTaget(this.textBox7, new CI.UIComponents.Validate.TextTaget(new CI.UIComponents.Validate.BaseValidator[] {
+            this.entityFiller.SetEntityField(this.txtRoleName, new CI.UIComponents.Filler.TextEntry("RoleName", ""));
+            this.txtRoleName.Location = new System.Drawing.Point(43, 103);
+            this.txtRoleName.Name = "txtRoleName";
+            this.txtRoleName.Size = new System.Drawing.Size(317, 23);
+            this.txtRoleName.TabIndex = 26;
+            this.validator1.SetTaget(this.txtRoleName, new CI.UIComponents.Validate.TextTaget(new CI.UIComponents.Validate.BaseValidator[] {
                 ((CI.UIComponents.Validate.BaseValidator)(new CI.UIComponents.Validate.RequiredFieldValidator("", "")))}));
             // 
             // label3
@@ -161,18 +161,20 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(200)))), ((int)(((byte)(239)))));
             this.ClientSize = new System.Drawing.Size(409, 529);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.textBox7);
+            this.Controls.Add(this.txtRoleName);
             this.Controls.Add(this.label3);
+            this.IsShowMaskDialog = false;
             this.Name = "RoleOptForm";
             this.Text = "InputLambdaForm";
             this.Title = "角色配置";
             this.Load += new System.EventHandler(this.ValChangeOptForm_Load);
             this.Controls.SetChildIndex(this.label3, 0);
-            this.Controls.SetChildIndex(this.textBox7, 0);
+            this.Controls.SetChildIndex(this.txtRoleName, 0);
             this.Controls.SetChildIndex(this.panel2, 0);
             this.Controls.SetChildIndex(this.btnSave, 0);
             this.Controls.SetChildIndex(this.btnCancel, 0);
@@ -187,7 +189,7 @@
         private CI.UIComponents.Filler.EntityFiller entityFiller;
         private CI.UIComponents.Validate.Validator validator1;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.TextBox txtRoleName;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.TreeView tvMenus;
         private System.Windows.Forms.CheckBox chkAll;

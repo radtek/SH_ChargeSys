@@ -41,6 +41,7 @@ namespace ChargeSys.Main.Forms
             Init();
             SelectDefaultMenus(m_role.Id);
             entityFiller.DisplayEntity(m_role);
+            txtRoleName.Enabled = false;
         }
 
         private void Init()

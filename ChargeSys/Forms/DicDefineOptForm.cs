@@ -40,6 +40,7 @@ namespace ChargeSys.Main.Forms
             entityFiller.DisplayEntity(m_netTypeDefine);
             combDefine.SelectedText = netTypeDefine.ConstantName;
             combDefine.SelectedValue = netTypeDefine.TypeCode;
+            combDefine.Enabled = false;
         }
 
         public bool IsUpdate { get { return bIsUpdate; } }

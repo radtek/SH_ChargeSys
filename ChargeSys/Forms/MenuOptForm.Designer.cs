@@ -114,6 +114,7 @@
             this.btnSave.TabIndex = 53;
             this.btnSave.Text = "保  存";
             this.btnSave.UseVisualStyleBackColor = false;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_BtnClick);
             // 
             // btnCancel
             // 
@@ -138,6 +139,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(200)))), ((int)(((byte)(239)))));
             this.ClientSize = new System.Drawing.Size(435, 402);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSave);
