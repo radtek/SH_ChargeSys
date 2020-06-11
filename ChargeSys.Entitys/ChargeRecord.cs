@@ -25,5 +25,6 @@ namespace ChargeSys.Entitys
         public string DateOfTest { get; set; }
 
         public string DateOfCharge { get; set; }
+        public string ChagreUser { get; set; }
     }
 }

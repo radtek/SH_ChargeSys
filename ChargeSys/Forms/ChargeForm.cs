@@ -134,7 +134,7 @@ namespace ChargeSys.Main.Forms
             ChargeRecord chargeRecord = new ChargeRecord();
             chargeFiller.FillEntity(chargeRecord);
             chargeRecord.DateOfCharge = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
-
+            chargeRecord.ChagreUser = AppHelper.UserName;
             List<ChargeDetail> details = GetChargeDetails(chargeRecord.PlateNo, chargeRecord.TestNo, out string testItem);
 
             chargeRecord.TestItem = testItem;
@@ -150,7 +150,7 @@ namespace ChargeSys.Main.Forms
             }
             else
             {
-                FrmTips.ShowTipsError(AppHelper.MainForm, "保存失败"+resp?.Message, ContentAlignment.MiddleCenter);
+                FrmTips.ShowTipsError(AppHelper.MainForm, "保存失败" + resp?.Message, ContentAlignment.MiddleCenter);
             }
         }
 
@@ -205,16 +205,29 @@ namespace ChargeSys.Main.Forms
 
         private void btnPrint_Click(object sender, EventArgs e)
         {
-            ChargeRecord chargeRecord = new ChargeRecord();
-            chargeFiller.FillEntity(chargeRecord);
-            chargeRecord.DateOfCharge = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
-
-            List<ChargeDetail> details = GetChargeDetails(chargeRecord.PlateNo, chargeRecord.TestNo,out string testItem);
-            PrintTickets printTickets = new PrintTickets(chargeRecord,details);
-            printTickets.Print();
+            ControlHelper.ThreadRunExt(AppHelper.MainForm, () =>
+            {
+                try
+                {
+                    ChargeRecord chargeRecord = new ChargeRecord();
+                    chargeFiller.FillEntity(chargeRecord);
+                    chargeRecord.DateOfCharge = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+                    chargeRecord.ChagreUser = AppHelper.UserName;
+                    List<ChargeDetail> details = GetChargeDetails(chargeRecord.PlateNo, chargeRecord.TestNo, out string testItem);
+                    PrintTickets printTickets = new PrintTickets(chargeRecord, details);
+                    printTickets.Print();
+                }
+                catch (Exception ex)
+                {
+                    ControlHelper.ThreadInvokerControl(AppHelper.MainForm, () =>
+                    {
+                        FrmTips.ShowTips(AppHelper.MainForm, $"打印异常{ex.Message}", 2000, true, ContentAlignment.MiddleCenter, null, TipsSizeMode.Medium, new Size(300, 100), TipsState.Error);
+                    });
+                }
+            }, null, AppHelper.MainForm, true, "正在打印……", 200);
         }
 
-        private List<ChargeDetail> GetChargeDetails(string plateNo,string testNo,out string testItem)
+        private List<ChargeDetail> GetChargeDetails(string plateNo, string testNo, out string testItem)
         {
             testItem = "";
             List<ChargeDetail> details = new List<ChargeDetail>();
