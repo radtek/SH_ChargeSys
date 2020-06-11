@@ -209,6 +209,20 @@ namespace ChargeSys.Core
             cell.VerticalAlignment = Element.ALIGN_MIDDLE;
             return cell;
         }
+
+        public PdfPCell CreateNoWidthCell(string text, Font font, int align, int colspan)
+        {
+            Paragraph pg = new Paragraph(text, font);
+            PdfPCell cell = new PdfPCell(pg);
+            cell.UseAscender = true;
+            cell.UseDescender = true;
+            cell.BorderWidth = 0;
+            
+            cell.HorizontalAlignment = align;
+            cell.VerticalAlignment = Element.ALIGN_MIDDLE;
+            cell.Colspan = colspan;
+            return cell;
+        }
         public PdfPCell CreateNoWidthNormalCell(string text, Font font, int align)
         {
             Paragraph pg = new Paragraph(text, font);
@@ -788,6 +802,13 @@ namespace ChargeSys.Core
             return doc;
         }
 
+        public Document CreateDocumentA7(float marginLeft, float marginRight, float marginTop, float marginBottom)
+        {
+            Document doc = new Document(PageSize.A7);
+            doc.SetMargins(marginLeft, marginRight, marginTop, marginBottom);
+            return doc;
+        }
+
 
         /// <summary>
         /// 创建无边框单元格
@@ -801,6 +822,7 @@ namespace ChargeSys.Core
             PdfPCell cell = new PdfPCell(pg);
             cell.VerticalAlignment = Element.ALIGN_MIDDLE;
             cell.Border = Rectangle.NO_BORDER;
+           
             return cell;
         }
 

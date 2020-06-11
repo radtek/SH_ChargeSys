@@ -133,6 +133,7 @@
             this.txtPrice.Font = new System.Drawing.Font("宋体", 12F);
             this.txtPrice.Location = new System.Drawing.Point(406, 141);
             this.txtPrice.Name = "txtPrice";
+            this.txtPrice.ReadOnly = true;
             this.txtPrice.Size = new System.Drawing.Size(179, 28);
             this.txtPrice.TabIndex = 14;
             this.txtPrice.Text = "0";
@@ -149,6 +150,7 @@
             this.flatField4.Font = new System.Drawing.Font("宋体", 12F);
             this.flatField4.Location = new System.Drawing.Point(5, 141);
             this.flatField4.Name = "flatField4";
+            this.flatField4.ReadOnly = true;
             this.flatField4.Size = new System.Drawing.Size(300, 28);
             this.flatField4.TabIndex = 15;
             // 
@@ -163,6 +165,7 @@
             this.flatField3.Font = new System.Drawing.Font("宋体", 12F);
             this.flatField3.Location = new System.Drawing.Point(406, 107);
             this.flatField3.Name = "flatField3";
+            this.flatField3.ReadOnly = true;
             this.flatField3.Size = new System.Drawing.Size(300, 28);
             this.flatField3.TabIndex = 16;
             // 
@@ -177,6 +180,7 @@
             this.flatField2.Font = new System.Drawing.Font("宋体", 12F);
             this.flatField2.Location = new System.Drawing.Point(5, 107);
             this.flatField2.Name = "flatField2";
+            this.flatField2.ReadOnly = true;
             this.flatField2.Size = new System.Drawing.Size(300, 28);
             this.flatField2.TabIndex = 17;
             // 
@@ -191,6 +195,7 @@
             this.flatField1.Font = new System.Drawing.Font("宋体", 12F);
             this.flatField1.Location = new System.Drawing.Point(406, 73);
             this.flatField1.Name = "flatField1";
+            this.flatField1.ReadOnly = true;
             this.flatField1.Size = new System.Drawing.Size(300, 28);
             this.flatField1.TabIndex = 18;
             // 
@@ -205,6 +210,7 @@
             this.txtPlateNo.Font = new System.Drawing.Font("宋体", 12F);
             this.txtPlateNo.Location = new System.Drawing.Point(5, 73);
             this.txtPlateNo.Name = "txtPlateNo";
+            this.txtPlateNo.ReadOnly = true;
             this.txtPlateNo.Size = new System.Drawing.Size(300, 28);
             this.txtPlateNo.TabIndex = 19;
             // 

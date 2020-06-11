@@ -40,7 +40,7 @@ namespace ChargeSys.Main.Forms
             string test = "检验流水号: 11003718083100081"
                                 + "号牌号码: 京EBX815"
                                 + "车辆类型: 小型轿车"
-                                + "检测项目: 制动,灯光,策划"
+                                + "检测项目: 制动,灯光,策划,悬架,底盘,动态底盘,外观"
                                 + "检测次数: 制动 1 次,灯光 10 次"
                                 + "引车员: 尚小楠"
                                 + "检测时间: 2018-09-01 08:11:26";
@@ -131,41 +131,11 @@ namespace ChargeSys.Main.Forms
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            var testItem = "";
-
             ChargeRecord chargeRecord = new ChargeRecord();
             chargeFiller.FillEntity(chargeRecord);
             chargeRecord.DateOfCharge = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
 
-            List<ChargeDetail> details = new List<ChargeDetail>();
-            foreach (var item in ItemList)
-            {
-                ChargeDetail detail = new ChargeDetail();
-                detail.PlateNo = chargeRecord.PlateNo;
-                detail.TestNo = chargeRecord.TestNo;
-                detail.TestItem = item.Item1;
-                detail.TestTimes = item.Item2;
-                detail.Price = item.Item3;
-                details.Add(detail);
-                if (testItem == "")
-                    testItem = detail.TestItem;
-                else
-                    testItem = $"{testItem},{detail.TestItem}";
-            }
-            
-            //其他费用
-            decimal otherPrice = 0;
-            decimal.TryParse(txtOtherFee.Text.Trim(), out otherPrice);
-            details.Add(new ChargeDetail()
-            {
-                PlateNo = chargeRecord.PlateNo,
-                TestNo = chargeRecord.TestNo,
-                TestItem = "其他",
-                TestTimes = 0,
-                Price = otherPrice,
-                Remark = txtOtherFeeRemark.Text.Trim()
-            });
-
+            List<ChargeDetail> details = GetChargeDetails(chargeRecord.PlateNo, chargeRecord.TestNo, out string testItem);
 
             chargeRecord.TestItem = testItem;
 
@@ -235,6 +205,44 @@ namespace ChargeSys.Main.Forms
 
         private void btnPrint_Click(object sender, EventArgs e)
         {
+            ChargeRecord chargeRecord = new ChargeRecord();
+            chargeFiller.FillEntity(chargeRecord);
+            chargeRecord.DateOfCharge = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+
+            List<ChargeDetail> details = GetChargeDetails(chargeRecord.PlateNo, chargeRecord.TestNo,out string testItem);
+            PrintTickets printTickets = new PrintTickets(chargeRecord,details);
+            printTickets.Print();
+        }
+
+        private List<ChargeDetail> GetChargeDetails(string plateNo,string testNo,out string testItem)
+        {
+            testItem = "";
+            List<ChargeDetail> details = new List<ChargeDetail>();
+            foreach (var item in ItemList)
+            {
+                ChargeDetail detail = new ChargeDetail();
+                detail.PlateNo = plateNo;
+                detail.TestNo = testNo;
+                detail.TestItem = item.Item1;
+                detail.TestTimes = item.Item2;
+                detail.Price = item.Item3;
+                details.Add(detail);
+            }
+
+            //其他费用
+            decimal otherPrice = 0;
+            decimal.TryParse(txtOtherFee.Text.Trim(), out otherPrice);
+            details.Add(new ChargeDetail()
+            {
+                PlateNo = plateNo,
+                TestNo = testNo,
+                TestItem = "其他",
+                TestTimes = 0,
+                Price = otherPrice,
+                Remark = txtOtherFeeRemark.Text.Trim()
+            });
+
+            return details;
 
         }
 
